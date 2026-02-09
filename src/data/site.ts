@@ -1,52 +1,39 @@
 const SITE_DATA = {
-  name: "next-starter",
-  url: process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000",
-  ogImage:
-    process.env.NEXT_PUBLIC_OG_IMAGE ?? "/images/screenshot-desktop-light.webp",
+  name: "AudoraLabs",
+  url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://audoralabs.com",
+  ogImage: process.env.NEXT_PUBLIC_OG_IMAGE ?? "/images/og-image.webp",
 
-  tagline: "Kickstart your Next.js project",
-  description: "A modern, performant starter kit for Next.js applications.",
+  tagline: "We build software that ships.",
+  description:
+    "AudoraLabs is an independent product studio focused on building reliable, production-grade software. Real-time systems, scalable backends, and infrastructure that holds up in production.",
   shortDescription:
-    "A modern, performant starter kit for Next.js applications.",
+    "Real-time systems, scalable backends, and infrastructure that holds up in production. Built independently and in collaboration with founders.",
 
-  alternateNames: ["next-starter", "Next Starter", "NextJS Starter"],
+  alternateNames: ["AudoraLabs", "Audora Labs", "Audora"],
 
-  twitterHandle: "@nextstarter",
+  twitterHandle: "@audoralabs",
+  githubHandle: "audoralabs",
+  linkedinHandle: "audoralabs",
 
   keywords: [
-    "next-starter",
-    "next.js starter",
-    "react boilerplate",
-    "next.js boilerplate",
-    "nextjs template",
-    "starter project",
-    "next.js template",
-    "typescript nextjs starter",
-    "boilerplate for next.js",
-    "web app starter",
+    "product studio",
+    "software development",
+    "real-time systems",
+    "scalable backends",
+    "production infrastructure",
+    "WebRTC",
+    "API development",
+    "event-driven architecture",
+    "typescript",
+    "rust",
+    "go",
   ],
 
-  features: [
-    {
-      title: "MDX blog",
-      description:
-        "Write posts in MDX with frontmatter, code blocks, and components.",
-    },
-    {
-      title: "SEO & metadata",
-      description:
-        "Built-in metadata, Open Graph, and JSON-LD for search and sharing.",
-    },
-    {
-      title: "Dark mode",
-      description: "System-aware theme toggle with persistent preference.",
-    },
-    {
-      title: "TypeScript",
-      description:
-        "Full TypeScript support and strict mode for safer refactors.",
-    },
-  ],
+  links: {
+    twitter: "https://x.com/audoralabs",
+    github: "https://github.com/audoralabs",
+    linkedin: "https://linkedin.com/company/audoralabs",
+  },
 };
 
 export default SITE_DATA;

@@ -3,71 +3,92 @@
 /* Custom dark variant for Tailwind CSS v4 */
 @custom-variant dark (&:where(.dark, .dark *));
 
-/* Root color variables using oklch for a muted, premium look */
+/* Monochrome Color Palette - Techie Black & White */
 :root {
-  /* Muted Slate/Zinc Tone */
-  --background: oklch(0.985 0.002 260); /* Very softened white */
-  --foreground: oklch(0.21 0.015 260); /* Muted slate black */
-  
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.21 0.015 260);
-  
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.21 0.015 260);
-  
-  --primary: oklch(0.21 0.02 260); /* Deep slate primary */
-  --primary-foreground: oklch(0.985 0 0);
-  
-  --secondary: oklch(0.96 0.005 260);
-  --secondary-foreground: oklch(0.21 0.015 260);
-  
-  --muted: oklch(0.96 0.005 260);
-  --muted-foreground: oklch(0.55 0.015 260); /* Softer muted text */
-  
-  --accent: oklch(0.96 0.005 260);
-  --accent-foreground: oklch(0.21 0.015 260);
-  
-  --destructive: oklch(0.65 0.2 23);
-  --destructive-foreground: oklch(0.985 0 0);
-  
-  --border: oklch(0.92 0.005 260);
-  --input: oklch(0.92 0.005 260);
-  --ring: oklch(0.21 0.015 260);
-  
+  /* Neutral/Gray Scale */
+  --neutral-950: #0a0a0a;
+  --neutral-900: #171717;
+  --neutral-800: #262626;
+  --neutral-700: #404040;
+  --neutral-600: #525252;
+  --neutral-500: #737373;
+  --neutral-400: #a3a3a3;
+  --neutral-300: #d4d4d4;
+  --neutral-200: #e5e5e5;
+  --neutral-100: #f5f5f5;
+  --neutral-50: #fafafa;
+
+  /* Accent - Subtle emerald for success states */
+  --emerald-500: #10b981;
+  --emerald-600: #059669;
+
+  /* Warning - Amber */
+  --amber-500: #f59e0b;
+  --amber-600: #d97706;
+
+  /* Light Mode */
+  --background: #ffffff;
+  --foreground: #0a0a0a;
+
+  --card: #ffffff;
+  --card-foreground: #0a0a0a;
+
+  --popover: #ffffff;
+  --popover-foreground: #0a0a0a;
+
+  --primary: #0a0a0a;
+  --primary-foreground: #ffffff;
+
+  --secondary: #f5f5f5;
+  --secondary-foreground: #0a0a0a;
+
+  --muted: #f5f5f5;
+  --muted-foreground: #525252;
+
+  --accent: #171717;
+  --accent-foreground: #ffffff;
+
+  --destructive: #ef4444;
+  --destructive-foreground: #ffffff;
+
+  --border: #e5e5e5;
+  --input: #e5e5e5;
+  --ring: #0a0a0a;
+
   --radius: 0.625rem;
-  
-  /** Content max width – change here to update hero, header, and blog layout */
-  --content-max-width: 64rem; /* 1024px = 5xl */
+
+  /* Content max width */
+  --content-max-width: 80rem;
 }
 
 .dark {
-  --background: #0b0d0e; /* Deep dark bg */
-  --foreground: oklch(0.92 0.005 260); /* Softened white */
-  
-  --card: oklch(0.12 0.01 260);
-  --card-foreground: oklch(0.92 0.005 260);
-  
-  --popover: oklch(0.12 0.01 260);
-  --popover-foreground: oklch(0.92 0.005 260);
-  
-  --primary: oklch(0.92 0.005 260);
-  --primary-foreground: oklch(0.12 0.01 260);
-  
-  --secondary: oklch(0.2 0.01 260);
-  --secondary-foreground: oklch(0.92 0.005 260);
-  
-  --muted: oklch(0.2 0.01 260);
-  --muted-foreground: oklch(0.65 0.01 260);
-  
-  --accent: oklch(0.2 0.01 260);
-  --accent-foreground: oklch(0.92 0.005 260);
-  
-  --destructive: oklch(0.5 0.2 23);
-  --destructive-foreground: oklch(0.92 0.005 260);
-  
-  --border: oklch(0.22 0.01 260);
-  --input: oklch(0.22 0.01 260);
-  --ring: oklch(0.8 0 0);
+  --background: #0a0a0a;
+  --foreground: #fafafa;
+
+  --card: #171717;
+  --card-foreground: #fafafa;
+
+  --popover: #171717;
+  --popover-foreground: #fafafa;
+
+  --primary: #fafafa;
+  --primary-foreground: #0a0a0a;
+
+  --secondary: #262626;
+  --secondary-foreground: #fafafa;
+
+  --muted: #262626;
+  --muted-foreground: #a3a3a3;
+
+  --accent: #fafafa;
+  --accent-foreground: #0a0a0a;
+
+  --destructive: #ef4444;
+  --destructive-foreground: #ffffff;
+
+  --border: #262626;
+  --input: #262626;
+  --ring: #fafafa;
 }
 
 @theme inline {
@@ -77,6 +98,7 @@
   --color-muted: var(--muted);
   --color-muted-foreground: var(--muted-foreground);
   --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
   --color-primary: var(--primary);
   --color-primary-foreground: var(--primary-foreground);
   --color-secondary: var(--secondary);
@@ -88,12 +110,163 @@
   --color-input: var(--input);
   --color-ring: var(--ring);
   --radius-radius: var(--radius);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-sans: var(--font-inter), system-ui, sans-serif;
+  --font-mono: var(--font-jetbrains-mono), monospace;
+
+  /* Neutral colors */
+  --color-neutral-950: var(--neutral-950);
+  --color-neutral-900: var(--neutral-900);
+  --color-neutral-800: var(--neutral-800);
+  --color-neutral-700: var(--neutral-700);
+  --color-neutral-600: var(--neutral-600);
+  --color-neutral-500: var(--neutral-500);
+  --color-neutral-400: var(--neutral-400);
+  --color-neutral-300: var(--neutral-300);
+  --color-neutral-200: var(--neutral-200);
+  --color-neutral-100: var(--neutral-100);
+  --color-neutral-50: var(--neutral-50);
+  --color-emerald-500: var(--emerald-500);
+  --color-emerald-600: var(--emerald-600);
+  --color-amber-500: var(--amber-500);
+  --color-amber-600: var(--amber-600);
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: var(--font-geist-sans), Arial, Helvetica, sans-serif;
+  font-family: var(--font-inter), system-ui, sans-serif;
+}
+
+/* Hero gradient - Dark sophisticated */
+.gradient-hero {
+  background: linear-gradient(135deg, #0a0a0a 0%, #171717 50%, #262626 100%);
+}
+
+.gradient-hero-dark {
+  background: linear-gradient(135deg, #0a0a0a 0%, #0a0a0a 50%, #171717 100%);
+}
+
+/* CTA gradient - Subtle dark */
+.gradient-cta {
+  background: linear-gradient(135deg, #0a0a0a 0%, #171717 100%);
+}
+
+/* Glass morphism */
+.glass {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.dark .glass {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+/* Glow effect for accents */
+.glow {
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+}
+
+/* Grid pattern overlay */
+.grid-pattern {
+  background-image: 
+    linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  background-size: 60px 60px;
+}
+
+/* Dot pattern overlay */
+.dot-pattern {
+  background-image: radial-gradient(rgba(255, 255, 255, 0.1) 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+
+/* Animation utilities */
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes pulse-border {
+  0%, 100% {
+    border-color: rgba(255, 255, 255, 0.1);
+  }
+  50% {
+    border-color: rgba(255, 255, 255, 0.2);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fade-in-up 0.6s ease-out forwards;
+}
+
+.animate-fade-in {
+  animation: fade-in 0.6s ease-out forwards;
+}
+
+.animate-float {
+  animation: float 4s ease-in-out infinite;
+}
+
+.animate-pulse-border {
+  animation: pulse-border 2s ease-in-out infinite;
+}
+
+/* Stagger delays */
+.delay-100 { animation-delay: 100ms; }
+.delay-200 { animation-delay: 200ms; }
+.delay-300 { animation-delay: 300ms; }
+.delay-400 { animation-delay: 400ms; }
+.delay-500 { animation-delay: 500ms; }
+
+/* Smooth scroll */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Focus styles */
+*:focus-visible {
+  outline: 2px solid var(--ring);
+  outline-offset: 2px;
+}
+
+/* Terminal styling */
+.terminal {
+  font-family: var(--font-jetbrains-mono), 'JetBrains Mono', monospace;
+  background: rgba(0, 0, 0, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Subtle text gradient for special elements */
+.gradient-text {
+  background: linear-gradient(135deg, #ffffff 0%, #a3a3a3 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }

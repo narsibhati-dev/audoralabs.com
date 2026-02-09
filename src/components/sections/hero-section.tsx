@@ -1,0 +1,211 @@
+"use client";
+
+import Link from "next/link";
+import { SITE_CONFIG } from "@/config/site";
+import { Badge } from "@/components/ui/badge";
+import { ArrowUpRight, Github } from "lucide-react";
+import { motion } from "motion/react";
+
+const MotionLink = motion.create(Link);
+
+// Code snippets that "leak" across the hero
+const codeSnippets = [
+  {
+    code: `const server = await serve({
+  port: 8080,
+  handler: async (req) => {
+    return Response.json(data)
+  }
+})`,
+    position: "top-20 -left-4",
+    rotation: "-6deg",
+  },
+  {
+    code: `export async function POST(req) {
+  const body = await req.json()
+  await db.insert(users, body)
+  return { success: true }
+}`,
+    position: "top-32 -right-8",
+    rotation: "4deg",
+  },
+  {
+    code: `impl WebSocket for Connection {
+  async fn handle(&self) -> Result<()> {
+    loop {
+      let msg = self.recv().await?;
+      self.broadcast(msg).await?;
+    }
+  }
+}`,
+    position: "bottom-40 -left-12",
+    rotation: "3deg",
+  },
+  {
+    code: `SELECT users.*, COUNT(orders.id)
+FROM users
+LEFT JOIN orders ON orders.user_id = users.id
+GROUP BY users.id
+HAVING COUNT(orders.id) > 10`,
+    position: "bottom-24 -right-4",
+    rotation: "-5deg",
+  },
+];
+
+// Floating terminal snippets
+const terminalSnippets = [
+  {
+    code: `$ cargo build --release\n✓ Compiled in 2.3s\n✓ Running tests...`,
+    position: "top-1/4 left-8",
+  },
+  {
+    code: `const api = await fetch('/api')\nconst data = await api.json()`,
+    position: "bottom-1/3 right-8",
+  },
+];
+
+export function HeroSection() {
+  return (
+    <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden bg-background">
+      {/* Floating terminal snippets */}
+      {terminalSnippets.map((snippet, i) => (
+        <div
+          key={`terminal-${i}`}
+          className={`absolute ${snippet.position} hidden lg:block`}
+        >
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.5 + i * 0.3, duration: 0.6 }}
+            className="rounded-lg border border-border bg-card p-4 shadow-lg"
+          >
+            <div className="flex items-center gap-1.5 mb-3">
+              <div className="h-2.5 w-2.5 rounded-full bg-neutral-400 dark:bg-neutral-600" />
+              <div className="h-2.5 w-2.5 rounded-full bg-neutral-400 dark:bg-neutral-600" />
+              <div className="h-2.5 w-2.5 rounded-full bg-neutral-400 dark:bg-neutral-600" />
+            </div>
+            <pre className="font-mono text-xs text-muted-foreground whitespace-pre">
+              {snippet.code}
+            </pre>
+          </motion.div>
+        </div>
+      ))}
+
+      {/* Leaky code background snippets */}
+      {codeSnippets.map((snippet, i) => (
+        <div
+          key={i}
+          className={`absolute ${snippet.position} hidden lg:block pointer-events-none select-none max-w-md`}
+          style={{
+            transform: `rotate(${snippet.rotation})`,
+          }}
+        >
+          <pre className="font-mono text-xs leading-relaxed text-neutral-300 dark:text-neutral-700 whitespace-pre opacity-50">
+            {snippet.code}
+          </pre>
+        </div>
+      ))}
+
+      {/* Content */}
+      <div className="relative z-10 mx-auto max-w-4xl px-4 text-center">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+        >
+          <Badge variant="outline" className="mb-6">
+            Product Studio
+          </Badge>
+        </motion.div>
+
+        <motion.h1
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.1 }}
+          className="mb-6 text-4xl font-bold tracking-tight text-foreground sm:text-5xl md:text-6xl lg:text-7xl"
+        >
+          {SITE_CONFIG.tagline}
+        </motion.h1>
+
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+          className="mx-auto mb-10 max-w-2xl text-lg text-muted-foreground sm:text-xl"
+        >
+          {SITE_CONFIG.shortDescription}
+        </motion.p>
+
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.3 }}
+          className="flex flex-col items-center justify-center gap-4 sm:flex-row"
+        >
+          {/* Primary CTA */}
+          <motion.div whileHover="hover">
+            <MotionLink
+              href="#products"
+              className="group inline-flex items-center gap-2 rounded-lg bg-foreground px-6 py-3 text-sm font-medium text-background transition-all hover:bg-foreground/90 active:scale-95"
+              whileHover="hover"
+            >
+              View Products
+              <div className="relative h-4 w-4 overflow-hidden">
+                <motion.div
+                  variants={{
+                    hover: { x: "150%", y: "-150%" },
+                  }}
+                  transition={{ duration: 0.3, ease: "easeInOut" }}
+                  className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
+                >
+                  <ArrowUpRight className="h-4 w-4" />
+                </motion.div>
+                <motion.div
+                  initial={{ x: "-150%", y: "150%" }}
+                  variants={{
+                    hover: { x: "0%", y: "0%" },
+                  }}
+                  transition={{ duration: 0.3, ease: "easeInOut" }}
+                  className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
+                >
+                  <ArrowUpRight className="h-4 w-4" />
+                </motion.div>
+              </div>
+            </MotionLink>
+          </motion.div>
+
+          {/* Secondary CTA */}
+          <motion.div whileHover="hover">
+            <MotionLink
+              href={SITE_CONFIG.links.twitter}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group inline-flex items-center gap-2 rounded-lg border border-border bg-card px-6 py-3 text-sm font-medium text-foreground transition-all hover:bg-muted active:scale-95"
+              whileHover="hover"
+            >
+              Follow the Build
+            </MotionLink>
+          </motion.div>
+        </motion.div>
+
+        {/* GitHub CTA */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.6, delay: 0.5 }}
+          className="mt-8"
+        >
+          <Link
+            href={SITE_CONFIG.links.github}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 text-sm text-muted-foreground transition-colors hover:text-foreground"
+          >
+            <Github className="h-4 w-4" />
+            Check out our open source work
+          </Link>
+        </motion.div>
+      </div>
+    </section>
+  );
+}
