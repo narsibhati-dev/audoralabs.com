@@ -7,7 +7,7 @@ import { ThemeToggle } from "@/components/theme-toggle";
 import { Github, Linkedin, Twitter, Menu, X } from "lucide-react";
 
 const navLinks = [
-  { href: "#products", label: "Products" },
+  { href: "/projects", label: "Projects" },
   { href: "/blogs", label: "Blog" },
   { href: "#about", label: "About" },
 ];
