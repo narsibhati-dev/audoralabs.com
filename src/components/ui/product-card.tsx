@@ -1,106 +1,109 @@
+"use client";
+
 import Link from "next/link";
 import { clsx } from "clsx";
-import { Badge } from "./badge";
-import { ArrowUpRight } from "lucide-react";
+import { motion } from "motion/react";
+import { Badge } from "@/components/ui/badge";
+import { ArrowUpRight, Video, Activity, FileText, Users } from "lucide-react";
+import type { Product } from "@/data/products";
 
-type ProductStatus = "live" | "in-progress" | "planned";
-
-interface ProductCardProps {
-  name: string;
-  description: string;
-  status: ProductStatus;
-  icon: React.ReactNode;
-  techStack: string[];
-  siteUrl?: string;
-  githubUrl?: string;
-  className?: string;
-}
+const iconMap: Record<string, React.ReactNode> = {
+  video: <Video className="h-6 w-6" />,
+  activity: <Activity className="h-6 w-6" />,
+  "file-text": <FileText className="h-6 w-6" />,
+  users: <Users className="h-6 w-6" />,
+};
 
 const statusConfig: Record<
-  ProductStatus,
-  { label: string; variant: "success" | "success" | "warning" }
+  Product["status"],
+  { label: string; variant: "success" | "warning" }
 > = {
   live: { label: "Live", variant: "success" },
   "in-progress": { label: "In Progress", variant: "success" },
   planned: { label: "Planned", variant: "warning" },
 };
 
-export function ProductCard({
-  name,
-  description,
-  status,
-  icon,
-  techStack,
-  siteUrl,
-  githubUrl,
-  className,
-}: ProductCardProps) {
-  const { label, variant } = statusConfig[status];
+const MotionLink = motion.create(Link);
+
+interface ProductCardProps {
+  product: Product;
+  className?: string;
+}
+
+export function ProductCard({ product, className }: ProductCardProps) {
+  const { label, variant } = statusConfig[product.status];
 
   return (
-    <div
-      className={clsx(
-        "group relative flex flex-col rounded-xl border border-border bg-card p-6",
-        "transition-all duration-300 hover:border-neutral-400 dark:hover:border-neutral-600 hover:shadow-md",
-        className,
-      )}
+    <MotionLink
+      href={`/products/${product.id}`}
+      className={clsx("group block", className)}
     >
-      {/* Status Badge */}
-      <div className="absolute right-4 top-4">
-        <Badge variant={variant}>{label}</Badge>
-      </div>
+      <motion.div
+        className="relative flex flex-col overflow-hidden rounded-xl border border-border bg-card"
+        initial={false}
+        whileHover={{
+          y: -6,
+          boxShadow:
+            "0 20px 25px -5px rgba(0,0,0,0.08), 0 8px 10px -6px rgba(0,0,0,0.04)",
+          transition: { type: "spring", stiffness: 300, damping: 25 },
+        }}
+        transition={{ type: "spring", stiffness: 300, damping: 25 }}
+      >
+        {/* Top gradient accent line */}
+        <div
+          className="h-0.5 w-full shrink-0 bg-linear-to-r from-transparent via-neutral-300 to-transparent dark:via-neutral-600"
+          aria-hidden
+        />
 
-      {/* Icon */}
-      <div className="mb-4 inline-flex w-fit rounded-lg bg-neutral-100 p-3 text-neutral-700 dark:bg-neutral-800 dark:text-neutral-300">
-        {icon}
-      </div>
+        {/* Preview area */}
+        <div className="relative aspect-video w-full bg-muted/50">
+          <div className="absolute inset-0 flex items-center justify-center">
+            <motion.div
+              className="rounded-xl bg-neutral-100 p-6 text-neutral-700 dark:bg-neutral-800 dark:text-neutral-300"
+              initial={false}
+              whileHover={{ scale: 1.08 }}
+              transition={{ type: "spring", stiffness: 300, damping: 20 }}
+            >
+              {iconMap[product.icon] || <Activity className="h-10 w-10" />}
+            </motion.div>
+          </div>
+          <div className="absolute right-3 top-3">
+            <Badge variant={variant}>{label}</Badge>
+          </div>
+        </div>
 
-      {/* Content */}
-      <h3 className="mb-2 text-xl font-semibold text-foreground">{name}</h3>
-      <p className="mb-4 flex-1 text-sm leading-relaxed text-muted-foreground">
-        {description}
-      </p>
+        {/* Content */}
+        <div className="flex flex-1 flex-col p-5">
+          <div className="mb-2 flex items-start justify-between gap-2">
+            <h3 className="text-lg font-semibold text-foreground transition-colors group-hover:text-foreground/90">
+              {product.name}
+            </h3>
+            <span className="flex shrink-0 translate-x-1 items-center justify-center opacity-0 text-muted-foreground transition-all duration-200 group-hover:translate-x-0 group-hover:opacity-100">
+              <ArrowUpRight className="h-5 w-5" />
+            </span>
+          </div>
+          <p className="mb-4 flex-1 text-sm leading-relaxed text-muted-foreground line-clamp-2">
+            {product.description}
+          </p>
 
-      {/* Links */}
-      <div className="mb-4 flex items-center gap-4">
-        {siteUrl && (
-          <Link
-            href={siteUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-1 text-sm font-medium text-foreground transition-colors hover:text-muted-foreground"
-          >
-            Visit Site
-            <ArrowUpRight className="h-3.5 w-3.5" />
-          </Link>
-        )}
-        {githubUrl && (
-          <Link
-            href={githubUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-1 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
-          >
-            GitHub
-            <ArrowUpRight className="h-3.5 w-3.5" />
-          </Link>
-        )}
-        {!siteUrl && !githubUrl && (
-          <span className="text-sm text-muted-foreground">Coming Soon</span>
-        )}
-      </div>
-
-      {/* Tech Stack */}
-      <div className="flex flex-wrap gap-2">
-        {techStack.map((tech) => (
-          <span
-            key={tech}
-            className="rounded-md bg-neutral-100 px-2 py-1 text-xs font-medium text-neutral-600 dark:bg-neutral-800 dark:text-neutral-400"
-          >
-            {tech}
-          </span>
-        ))}
-      </div>
-    </div>
+          {/* Tech Stack */}
+          <div className="flex flex-wrap gap-1.5">
+            {product.techStack.slice(0, 3).map((tech) => (
+              <span
+                key={tech}
+                className="rounded-md bg-neutral-100 px-2 py-0.5 text-xs font-medium text-neutral-600 dark:bg-neutral-800 dark:text-neutral-400"
+              >
+                {tech}
+              </span>
+            ))}
+            {product.techStack.length > 3 && (
+              <span className="rounded-md bg-neutral-100 px-2 py-0.5 text-xs font-medium text-neutral-600 dark:bg-neutral-800 dark:text-neutral-400">
+                +{product.techStack.length - 3}
+              </span>
+            )}
+          </div>
+        </div>
+      </motion.div>
+    </MotionLink>
   );
 }

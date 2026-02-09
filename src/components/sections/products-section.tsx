@@ -1,22 +1,22 @@
 import { Badge } from "@/components/ui/badge";
 import { ProductCard } from "@/components/ui/product-card";
+import {
+  StaggerContainer,
+  StaggerItem,
+} from "@/components/ui/stagger-container";
 import { AnimateOnScroll } from "@/components/ui/animate-on-scroll";
 import { products } from "@/data/products";
-import { Video, Activity, FileText, Users } from "lucide-react";
-
-const iconMap: Record<string, React.ReactNode> = {
-  video: <Video className="h-6 w-6" />,
-  activity: <Activity className="h-6 w-6" />,
-  "file-text": <FileText className="h-6 w-6" />,
-  users: <Users className="h-6 w-6" />,
-};
 
 export function ProductsSection() {
   return (
     <section id="products" className="py-20 sm:py-28">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      {/* Section divider - thin gradient line */}
+      <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8" aria-hidden>
+        <div className="h-px w-full bg-linear-to-r from-transparent via-border to-transparent" />
+      </div>
+      <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         <AnimateOnScroll>
-          <div className="text-center">
+          <div className="mt-12 text-center">
             <Badge className="mb-4">Products</Badge>
             <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
               What we&apos;re building
@@ -28,21 +28,13 @@ export function ProductsSection() {
           </div>
         </AnimateOnScroll>
 
-        <div className="mt-16 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:gap-8">
-          {products.map((product, index) => (
-            <AnimateOnScroll key={product.id} delay={index * 100}>
-              <ProductCard
-                name={product.name}
-                description={product.description}
-                status={product.status}
-                icon={iconMap[product.icon] || <Activity className="h-6 w-6" />}
-                techStack={product.techStack}
-                siteUrl={product.siteUrl}
-                githubUrl={product.githubUrl}
-              />
-            </AnimateOnScroll>
+        <StaggerContainer className="mt-16 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:gap-8">
+          {products.map((product) => (
+            <StaggerItem key={product.id}>
+              <ProductCard product={product} />
+            </StaggerItem>
           ))}
-        </div>
+        </StaggerContainer>
       </div>
     </section>
   );

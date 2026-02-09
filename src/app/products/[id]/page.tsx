@@ -52,7 +52,7 @@ export async function generateMetadata({
   };
 }
 
-export default async function ProjectDetailPage({
+export default async function ProductsDetailPage({
   params,
 }: {
   params: Promise<{ id: string }>;
@@ -71,11 +71,11 @@ export default async function ProjectDetailPage({
       {/* Back navigation */}
       <div className="mb-8">
         <Link
-          href="/projects"
+          href="/products"
           className="inline-flex items-center gap-2 text-sm text-muted-foreground transition-colors hover:text-foreground"
         >
           <ArrowLeft className="h-4 w-4" />
-          Back to projects
+          Back to products
         </Link>
       </div>
 

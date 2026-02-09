@@ -1,7 +1,11 @@
 import { Badge } from "@/components/ui/badge";
-import { ProjectCard } from "@/components/ui/project-card";
+import {
+  StaggerContainer,
+  StaggerItem,
+} from "@/components/ui/stagger-container";
 import { AnimateOnScroll } from "@/components/ui/animate-on-scroll";
 import { products } from "@/data/products";
+import { ProductCard } from "@/components/ui/product-card";
 
 export const metadata = {
   title: "Projects | AudoraLabs",
@@ -9,10 +13,10 @@ export const metadata = {
     "A portfolio of products and projects built by AudoraLabs - from real-time media platforms to developer tools.",
 };
 
-export default function ProjectsPage() {
+export default function ProductsPage() {
   return (
     <section className="py-16 sm:py-20">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         <AnimateOnScroll>
           <div className="text-center">
             <Badge className="mb-4">Portfolio</Badge>
@@ -32,13 +36,13 @@ export default function ProjectsPage() {
               No projects yet.
             </p>
           ) : (
-            <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:gap-8">
-              {products.map((product, index) => (
-                <AnimateOnScroll key={product.id} delay={index * 100}>
-                  <ProjectCard product={product} />
-                </AnimateOnScroll>
+            <StaggerContainer className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:gap-8">
+              {products.map((product) => (
+                <StaggerItem key={product.id}>
+                  <ProductCard product={product} />
+                </StaggerItem>
               ))}
-            </div>
+            </StaggerContainer>
           )}
         </div>
       </div>

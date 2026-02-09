@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { motion } from "motion/react";
 import { clsx } from "clsx";
 
 interface AnimateOnScrollProps {
@@ -16,43 +16,20 @@ export function AnimateOnScroll({
   delay = 0,
   threshold = 0.1,
 }: AnimateOnScrollProps) {
-  const [isVisible, setIsVisible] = useState(false);
-  const ref = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-          observer.unobserve(entry.target);
-        }
-      },
-      { threshold },
-    );
-
-    const currentRef = ref.current;
-    if (currentRef) {
-      observer.observe(currentRef);
-    }
-
-    return () => {
-      if (currentRef) {
-        observer.unobserve(currentRef);
-      }
-    };
-  }, [threshold]);
-
   return (
-    <div
-      ref={ref}
-      className={clsx(
-        "transition-all duration-700 ease-out",
-        isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8",
-        className,
-      )}
-      style={{ transitionDelay: `${delay}ms` }}
+    <motion.div
+      initial={{ opacity: 0, y: 30, filter: "blur(4px)" }}
+      whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+      viewport={{ once: true, amount: threshold }}
+      transition={{
+        type: "spring",
+        stiffness: 100,
+        damping: 20,
+        delay: delay / 1000,
+      }}
+      className={clsx(className)}
     >
       {children}
-    </div>
+    </motion.div>
   );
 }

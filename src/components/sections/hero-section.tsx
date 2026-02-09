@@ -4,7 +4,7 @@ import Link from "next/link";
 import { SITE_CONFIG } from "@/config/site";
 import { Badge } from "@/components/ui/badge";
 import { ArrowUpRight, Github } from "lucide-react";
-import { motion } from "motion/react";
+import { motion, useScroll, useTransform } from "motion/react";
 
 const MotionLink = motion.create(Link);
 
@@ -65,6 +65,9 @@ const terminalSnippets = [
 ];
 
 export function HeroSection() {
+  const { scrollYProgress } = useScroll();
+  const codeParallaxY = useTransform(scrollYProgress, [0, 0.25], [0, 60]);
+
   return (
     <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden bg-background">
       {/* Floating terminal snippets */}
@@ -75,8 +78,19 @@ export function HeroSection() {
         >
           <motion.div
             initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.5 + i * 0.3, duration: 0.6 }}
+            animate={{
+              opacity: 1,
+              y: [0, -6, 0],
+            }}
+            transition={{
+              opacity: { duration: 0.6, delay: 0.5 + i * 0.3 },
+              y: {
+                duration: 3.5 + i * 0.5,
+                repeat: Infinity,
+                ease: "easeInOut",
+                delay: 1.2 + i * 0.2,
+              },
+            }}
             className="rounded-lg border border-border bg-card p-4 shadow-lg"
           >
             <div className="flex items-center gap-1.5 mb-3">
@@ -91,19 +105,20 @@ export function HeroSection() {
         </div>
       ))}
 
-      {/* Leaky code background snippets */}
+      {/* Leaky code background snippets with parallax */}
       {codeSnippets.map((snippet, i) => (
-        <div
+        <motion.div
           key={i}
           className={`absolute ${snippet.position} hidden lg:block pointer-events-none select-none max-w-md`}
           style={{
-            transform: `rotate(${snippet.rotation})`,
+            rotate: snippet.rotation,
+            y: codeParallaxY,
           }}
         >
           <pre className="font-mono text-xs leading-relaxed text-neutral-300 dark:text-neutral-700 whitespace-pre opacity-50">
             {snippet.code}
           </pre>
-        </div>
+        </motion.div>
       ))}
 
       {/* Content */}
@@ -112,10 +127,29 @@ export function HeroSection() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
+          className="inline-block"
         >
-          <Badge variant="outline" className="mb-6">
-            Product Studio
-          </Badge>
+          <motion.span
+            initial={{ opacity: 0, boxShadow: "0 0 0 0 rgba(0,0,0,0)" }}
+            animate={{
+              opacity: 1,
+              boxShadow: [
+                "0 0 0 0 rgba(163,163,163,0)",
+                "0 0 20px 2px rgba(163,163,163,0.15)",
+                "0 0 0 0 rgba(163,163,163,0)",
+              ],
+            }}
+            transition={{
+              duration: 1.8,
+              delay: 0.4,
+              boxShadow: { times: [0, 0.5, 1], duration: 1.8 },
+            }}
+            className="inline-block rounded-full"
+          >
+            <Badge variant="outline" className="mb-6 ring-0">
+              Product Studio
+            </Badge>
+          </motion.span>
         </motion.div>
 
         <motion.h1
