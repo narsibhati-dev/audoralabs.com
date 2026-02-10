@@ -34,7 +34,7 @@ export function Header({ blogs = [] }: HeaderProps) {
 
   return (
     <header
-      className={`fixed top-0 right-0 left-0 z-50 transition-all duration-700 ease-out md:top-2 md:left-1/2 md:w-full md:max-w-6xl md:-translate-x-1/2 md:px-3 ${
+      className={`fixed top-0 right-0 left-0 z-50 transition-all duration-700 ease-out md:top-2 md:left-0 md:right-0 md:mx-auto md:w-full md:max-w-6xl md:px-3 ${
         mounted ? "translate-y-0 opacity-100" : "-translate-y-4 opacity-0"
       }`}
     >

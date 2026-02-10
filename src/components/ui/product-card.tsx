@@ -45,7 +45,7 @@ export function ProductCard({ product, className }: ProductCardProps) {
 
   return (
     <motion.div
-      className={clsx("group block", className)}
+      className={clsx("group block h-full", className)}
       initial={false}
       whileHover={{
         y: -6,
@@ -55,14 +55,14 @@ export function ProductCard({ product, className }: ProductCardProps) {
       }}
       transition={{ type: "spring", stiffness: 300, damping: 25 }}
     >
-      <div className="relative flex flex-col overflow-hidden rounded-xl border border-border bg-card">
+      <div className="relative flex h-full flex-col overflow-hidden rounded-xl border border-border bg-card">
         {/* Shimmer overlay on hover */}
         <div className="pointer-events-none absolute inset-0 z-10 overflow-hidden rounded-xl opacity-0 transition-opacity duration-300 group-hover:opacity-100">
           <div className="absolute inset-0 -translate-x-full bg-linear-to-r from-transparent via-neutral-200/20 to-transparent transition-transform duration-500 group-hover:translate-x-full dark:via-neutral-600/20" />
         </div>
 
         {/* Main content: link to product page (no nested <a>) */}
-        <MotionLink href={productHref} className="block">
+        <MotionLink href={productHref} className="flex flex-1 flex-col">
           {/* Top gradient accent line */}
           <div
             className="h-0.5 w-full shrink-0 bg-linear-to-r from-transparent via-neutral-300 to-transparent dark:via-neutral-600"

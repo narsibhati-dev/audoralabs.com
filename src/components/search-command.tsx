@@ -1,7 +1,7 @@
 "use client";
 
 import * as React from "react";
-import { Home, FileText, FolderKanban, User } from "lucide-react";
+import { Home, FileText, FolderKanban, User, ArrowRight } from "lucide-react";
 import { useRouter } from "next/navigation";
 import {
   CommandDialog,
@@ -118,6 +118,13 @@ export function SearchCommand({ blogs, triggerClassName }: SearchCommandProps) {
                 <span>{product.name}</span>
               </CommandItem>
             ))}
+            <CommandItem
+              onSelect={() => runCommand(() => router.push("/products"))}
+              className="text-muted-foreground"
+            >
+              <ArrowRight className="mr-2 h-4 w-4" />
+              <span>View All Products</span>
+            </CommandItem>
           </CommandGroup>
 
           <CommandSeparator />
@@ -134,6 +141,13 @@ export function SearchCommand({ blogs, triggerClassName }: SearchCommandProps) {
                 <span>{blog.metadata.title}</span>
               </CommandItem>
             ))}
+            <CommandItem
+              onSelect={() => runCommand(() => router.push("/blogs"))}
+              className="text-muted-foreground"
+            >
+              <ArrowRight className="mr-2 h-4 w-4" />
+              <span>View All Blogs</span>
+            </CommandItem>
           </CommandGroup>
         </CommandList>
       </CommandDialog>

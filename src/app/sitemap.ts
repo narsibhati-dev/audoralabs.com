@@ -1,6 +1,7 @@
 import type { MetadataRoute } from "next";
 import { SITE_CONFIG } from "@/config/site";
 import { getBlogPosts } from "@/blogs/data/mdx";
+import { products } from "@/data/products";
 
 export const dynamic = "force-static";
 
@@ -48,5 +49,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.7,
   }));
 
-  return [...staticRoutes, ...blogPosts];
+  // Products
+  const productPages: MetadataRoute.Sitemap = products.map((product) => ({
+    url: `${siteUrl}/products/${product.id}`,
+    lastModified: currentDate,
+    changeFrequency: "weekly" as const,
+    priority: 0.8,
+  }));
+
+  return [...staticRoutes, ...productPages, ...blogPosts];
 }
