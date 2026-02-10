@@ -16,7 +16,7 @@ import type { BlogItem } from "@/components/search-command";
 
 const NAV_LINKS = [
   { href: "/#products", label: "Products" },
-  { href: "/blogs", label: "Blogs" },
+  { href: "/#blogs", label: "Blogs" },
   { href: "/#about", label: "About" },
 ] as const;
 

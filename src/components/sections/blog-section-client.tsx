@@ -28,7 +28,10 @@ export function BlogSectionClient({ posts }: BlogSectionClientProps) {
   const recent = posts.slice(1, 4);
 
   return (
-    <section className="relative py-20 sm:py-28 dark bg-[#0a0a0a] text-foreground">
+    <section
+      id="blogs"
+      className="relative py-20 sm:py-28 dark bg-[#0a0a0a] text-foreground"
+    >
       {/* Dot pattern overlay with radial fade */}
       <div
         className="pointer-events-none absolute inset-0 bg-[radial-gradient(#262626_1px,transparent_1px)] [background-size:16px_16px] [mask-image:radial-gradient(ellipse_at_center,black_60%,transparent_100%)]"

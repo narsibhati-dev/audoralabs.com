@@ -73,7 +73,10 @@ export default function ProductsPage() {
               No projects in this category.
             </p>
           ) : (
-            <StaggerContainer className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:gap-8">
+            <StaggerContainer
+              key={activeCategory}
+              className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:gap-8"
+            >
               {filteredProducts.map((product) => (
                 <StaggerItem key={product.id}>
                   <ProductCard product={product} />
