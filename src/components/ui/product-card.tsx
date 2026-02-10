@@ -48,14 +48,12 @@ export function ProductCard({ product, className }: ProductCardProps) {
       className={clsx("group block h-full", className)}
       initial={false}
       whileHover={{
-        y: -6,
-        boxShadow:
-          "0 20px 25px -5px rgba(0,0,0,0.08), 0 8px 10px -6px rgba(0,0,0,0.04)",
+        y: -4,
         transition: { type: "spring", stiffness: 300, damping: 25 },
       }}
       transition={{ type: "spring", stiffness: 300, damping: 25 }}
     >
-      <div className="relative flex h-full flex-col overflow-hidden rounded-xl border border-border bg-card">
+      <div className="relative flex h-full flex-col overflow-hidden rounded-xl border border-border bg-gradient-to-b from-neutral-50 to-neutral-100 transition-all duration-300 group-hover:shadow-lg group-hover:border-neutral-400 dark:from-neutral-900 dark:to-neutral-950 dark:group-hover:border-neutral-600">
         {/* Shimmer overlay on hover */}
         <div className="pointer-events-none absolute inset-0 z-10 overflow-hidden rounded-xl opacity-0 transition-opacity duration-300 group-hover:opacity-100">
           <div className="absolute inset-0 -translate-x-full bg-linear-to-r from-transparent via-neutral-200/20 to-transparent transition-transform duration-500 group-hover:translate-x-full dark:via-neutral-600/20" />

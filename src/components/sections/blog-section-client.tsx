@@ -28,8 +28,14 @@ export function BlogSectionClient({ posts }: BlogSectionClientProps) {
   const recent = posts.slice(1, 4);
 
   return (
-    <section className="bg-muted/50 py-20 sm:py-28">
-      <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+    <section className="relative py-20 sm:py-28 dark bg-[#0a0a0a] text-foreground">
+      {/* Dot pattern overlay with radial fade */}
+      <div
+        className="pointer-events-none absolute inset-0 bg-[radial-gradient(#262626_1px,transparent_1px)] [background-size:16px_16px] [mask-image:radial-gradient(ellipse_at_center,black_60%,transparent_100%)]"
+        aria-hidden
+      />
+
+      <div className="relative mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         <AnimateOnScroll>
           <div className="text-center">
             <Badge className="mb-4">Insights</Badge>
@@ -49,7 +55,7 @@ export function BlogSectionClient({ posts }: BlogSectionClientProps) {
             <AnimateOnScroll className="lg:col-span-2">
               <MotionLink
                 href={`/blogs/${featured.slug}`}
-                className="group block overflow-hidden rounded-xl border border-border bg-card"
+                className="group block overflow-hidden rounded-xl border border-border bg-gradient-to-b from-neutral-50 to-neutral-100 dark:from-neutral-900 dark:to-neutral-950"
                 initial={false}
                 whileHover={{
                   scale: 1.01,
@@ -90,7 +96,7 @@ export function BlogSectionClient({ posts }: BlogSectionClientProps) {
                 <StaggerItem key={post.slug}>
                   <Link
                     href={`/blogs/${post.slug}`}
-                    className="group block rounded-xl border border-border bg-card p-4 transition-colors hover:border-neutral-400 dark:hover:border-neutral-600 hover:shadow-md"
+                    className="group block rounded-xl border border-border bg-gradient-to-b from-neutral-50 to-neutral-100 p-4 transition-colors hover:border-neutral-400 dark:from-neutral-900 dark:to-neutral-950 dark:hover:border-neutral-600 hover:shadow-md"
                   >
                     <h4 className="mb-2 font-semibold text-foreground transition-colors group-hover:text-muted-foreground">
                       <span className="relative inline-block after:absolute after:left-0 after:bottom-0 after:h-px after:w-0 after:bg-muted-foreground after:transition-all after:duration-200 group-hover:after:w-full">

@@ -17,7 +17,7 @@ export function BlogPostCard({
 }: BlogPostCardProps) {
   return (
     <Link
-      className="group flex flex-col gap-1 rounded-lg border border-border/50 p-3 transition-all hover:border-border sm:p-4"
+      className="group flex flex-col gap-1 rounded-lg border border-border/50 bg-gradient-to-b from-neutral-50 to-neutral-100 p-3 transition-all hover:border-border dark:from-neutral-900 dark:to-neutral-950 sm:p-4"
       href={`/blogs/${slug}`}
     >
       <div className="flex w-full flex-col gap-1 sm:flex-row sm:items-start sm:justify-between">

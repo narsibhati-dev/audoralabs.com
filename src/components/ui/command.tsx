@@ -24,7 +24,7 @@ Command.displayName = CommandPrimitive.displayName;
 
 const CommandDialog = ({ children, ...props }: DialogProps) => (
   <Dialog {...props}>
-    <DialogContent className="overflow-hidden p-0 gap-0 border-border dark:border-white/10 bg-white dark:bg-[#0a0a0a] shadow-2xl">
+    <DialogContent className="overflow-hidden p-0 gap-0 border-border dark:border-white/10 bg-white dark:bg-popover shadow-2xl">
       <DialogTitle className="sr-only">Search</DialogTitle>
       <Command className="[&_[cmdk-group-heading]]:px-2 [&_[cmdk-group-heading]]:font-medium [&_[cmdk-group-heading]]:text-muted-foreground [&_[cmdk-group]:not([hidden])_~[cmdk-group]]:pt-0 [&_[cmdk-group]]:px-2 [&_[cmdk-input-wrapper]_svg]:h-5 [&_[cmdk-input-wrapper]_svg]:w-5 [&_[cmdk-input]]:h-12 [&_[cmdk-item]]:px-2 [&_[cmdk-item]]:py-3 [&_[cmdk-item]_svg]:h-5 [&_[cmdk-item]_svg]:w-5">
         {children}
@@ -38,7 +38,7 @@ const CommandInput = React.forwardRef<
   React.ComponentPropsWithoutRef<typeof CommandPrimitive.Input>
 >(({ className, ...props }, ref) => (
   <div
-    className="flex items-center border-b border-border dark:border-white/10 px-4"
+    className="flex items-center border-b border-border dark:border-white/10 px-4 transition-colors hover:bg-muted/50"
     cmdk-input-wrapper=""
   >
     <Search className="mr-2 h-4 w-4 shrink-0 text-muted-foreground" />

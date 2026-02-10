@@ -17,10 +17,11 @@ const iconMap: Record<string, React.ReactNode> = {
 
 export function ExpertiseSection() {
   return (
-    <section className="relative bg-muted/50 py-20 sm:py-28">
+    <section className="relative py-20 sm:py-28 dark bg-[#0a0a0a] text-foreground">
       {/* Subtle grid pattern overlay */}
+      {/* Dot pattern overlay with radial fade */}
       <div
-        className="pointer-events-none absolute inset-0 bg-[linear-gradient(rgba(0,0,0,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(0,0,0,0.03)_1px,transparent_1px)] bg-size-[48px_48px] dark:bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)]"
+        className="pointer-events-none absolute inset-0 bg-[radial-gradient(#262626_1px,transparent_1px)] [background-size:16px_16px] [mask-image:radial-gradient(ellipse_at_center,black_60%,transparent_100%)]"
         aria-hidden
       />
       <div className="relative mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">

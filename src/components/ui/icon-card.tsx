@@ -24,7 +24,7 @@ export function IconCard({
   return (
     <motion.div
       className={clsx(
-        "group relative rounded-xl border border-border bg-card p-6",
+        "group relative rounded-xl border border-border bg-gradient-to-b from-neutral-50 to-neutral-100 p-6 dark:from-neutral-900 dark:to-neutral-950",
         "hover:border-neutral-400 dark:hover:border-neutral-600",
         "hover:shadow-lg",
         className,
