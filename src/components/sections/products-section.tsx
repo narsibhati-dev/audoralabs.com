@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { Badge } from "@/components/ui/badge";
 import { ProductCard } from "@/components/ui/product-card";
 import {
@@ -6,6 +7,7 @@ import {
 } from "@/components/ui/stagger-container";
 import { AnimateOnScroll } from "@/components/ui/animate-on-scroll";
 import { products } from "@/data/products";
+import { ArrowRight } from "lucide-react";
 
 export function ProductsSection() {
   return (
@@ -35,6 +37,16 @@ export function ProductsSection() {
             </StaggerItem>
           ))}
         </StaggerContainer>
+
+        <div className="mt-12 flex justify-center">
+          <Link
+            href="/products"
+            className="inline-flex items-center gap-2 rounded-lg border border-border bg-background px-5 py-2.5 text-sm font-semibold text-foreground shadow-sm transition-colors hover:bg-accent hover:text-accent-foreground"
+          >
+            View all products
+            <ArrowRight className="h-4 w-4" />
+          </Link>
+        </div>
       </div>
     </section>
   );

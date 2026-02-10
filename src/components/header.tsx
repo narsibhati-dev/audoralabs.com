@@ -15,9 +15,9 @@ import { Menu } from "lucide-react";
 import type { BlogItem } from "@/components/search-command";
 
 const NAV_LINKS = [
+  { href: "/#expertise", label: "Our Expertise" },
   { href: "/#products", label: "Products" },
   { href: "/#blogs", label: "Blogs" },
-  { href: "/#about", label: "About" },
 ] as const;
 
 interface HeaderProps {

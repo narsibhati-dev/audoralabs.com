@@ -17,7 +17,10 @@ const iconMap: Record<string, React.ReactNode> = {
 
 export function ExpertiseSection() {
   return (
-    <section className="relative py-20 sm:py-28 dark bg-[#0a0a0a] text-foreground">
+    <section
+      id="expertise"
+      className="relative py-20 sm:py-28 dark bg-[#0a0a0a] text-foreground"
+    >
       {/* Subtle grid pattern overlay */}
       {/* Dot pattern overlay with radial fade */}
       <div
