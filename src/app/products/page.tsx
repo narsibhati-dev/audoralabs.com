@@ -1,3 +1,6 @@
+"use client";
+
+import { useMemo, useState } from "react";
 import { Badge } from "@/components/ui/badge";
 import {
   StaggerContainer,
@@ -6,14 +9,25 @@ import {
 import { AnimateOnScroll } from "@/components/ui/animate-on-scroll";
 import { products } from "@/data/products";
 import { ProductCard } from "@/components/ui/product-card";
+import { clsx } from "clsx";
 
-export const metadata = {
-  title: "Projects | AudoraLabs",
-  description:
-    "A portfolio of products and projects built by AudoraLabs - from real-time media platforms to developer tools.",
-};
+const ALL = "All";
+type CategoryFilter = typeof ALL | string;
 
 export default function ProductsPage() {
+  const [activeCategory, setActiveCategory] = useState<CategoryFilter>(ALL);
+
+  const categories = useMemo(() => {
+    const set = new Set<string>();
+    products.forEach((p) => p.category && set.add(p.category));
+    return [ALL, ...Array.from(set).sort()];
+  }, []);
+
+  const filteredProducts = useMemo(() => {
+    if (activeCategory === ALL) return products;
+    return products.filter((p) => p.category === activeCategory);
+  }, [activeCategory]);
+
   return (
     <section className="py-16 sm:py-20">
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
@@ -30,14 +44,37 @@ export default function ProductsPage() {
           </div>
         </AnimateOnScroll>
 
+        {/* Category tabs */}
+        <div className="mt-10 flex flex-wrap justify-center gap-2">
+          {categories.map((cat) => {
+            const label = cat === ALL ? `${ALL} (${products.length})` : cat;
+            const isActive = activeCategory === cat;
+            return (
+              <button
+                key={cat}
+                type="button"
+                onClick={() => setActiveCategory(cat)}
+                className={clsx(
+                  "rounded-full px-4 py-2 text-sm font-medium transition-colors",
+                  isActive
+                    ? "bg-foreground text-background"
+                    : "bg-muted text-muted-foreground hover:bg-muted/80 hover:text-foreground",
+                )}
+              >
+                {label}
+              </button>
+            );
+          })}
+        </div>
+
         <div className="mt-12">
-          {products.length === 0 ? (
+          {filteredProducts.length === 0 ? (
             <p className="text-center text-muted-foreground">
-              No projects yet.
+              No projects in this category.
             </p>
           ) : (
             <StaggerContainer className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:gap-8">
-              {products.map((product) => (
+              {filteredProducts.map((product) => (
                 <StaggerItem key={product.id}>
                   <ProductCard product={product} />
                 </StaggerItem>

@@ -9,6 +9,7 @@ import {
   getWebSiteJsonLd,
   getOrganizationJsonLd,
 } from "@/lib/seo";
+import { getBlogPosts } from "@/blogs/data/mdx";
 import "@/styles/globals.css";
 
 const inter = Inter({
@@ -32,6 +33,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   const jsonLd = [getWebSiteJsonLd(), getOrganizationJsonLd()];
+  const blogPosts = getBlogPosts();
+  const blogs = blogPosts.map((p) => ({
+    slug: p.slug,
+    metadata: { title: p.metadata.title },
+  }));
 
   return (
     <html lang="en" suppressHydrationWarning>
@@ -49,8 +55,8 @@ export default function RootLayout({
       >
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           <div className="relative flex min-h-screen flex-col">
-            <Header />
-            <main className="flex-1">{children}</main>
+            <Header blogs={blogs} />
+            <main className="flex-1 pt-14 md:pt-16">{children}</main>
             <Footer />
           </div>
         </ThemeProvider>

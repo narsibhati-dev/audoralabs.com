@@ -58,7 +58,7 @@
   --radius: 0.625rem;
 
   /* Content max width */
-  --content-max-width: 80rem;
+  --content-max-width: 72rem;
 }
 
 .dark {
@@ -99,6 +99,8 @@
   --color-muted-foreground: var(--muted-foreground);
   --color-card: var(--card);
   --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
   --color-primary: var(--primary);
   --color-primary-foreground: var(--primary-foreground);
   --color-secondary: var(--secondary);
@@ -254,6 +256,11 @@ html {
 *:focus-visible {
   outline: 2px solid var(--ring);
   outline-offset: 2px;
+}
+
+/* Remove the focus ring from command palette input — it has its own visual treatment */
+[cmdk-input]:focus-visible {
+  outline: none;
 }
 
 /* Terminal styling */

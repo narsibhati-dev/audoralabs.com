@@ -1,84 +1,93 @@
 "use client";
 
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { SITE_CONFIG } from "@/config/site";
 import { ThemeToggle } from "@/components/theme-toggle";
-import { Menu, X } from "lucide-react";
+import { SearchCommand } from "@/components/search-command";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
+import { Menu } from "lucide-react";
+import type { BlogItem } from "@/components/search-command";
 
-const navLinks = [
-  { href: "/products", label: "Products" },
-  { href: "/blogs", label: "Blog" },
-  { href: "#about", label: "About" },
-];
+const NAV_LINKS = [
+  { href: "/#products", label: "Products" },
+  { href: "/blogs", label: "Blogs" },
+  { href: "/#about", label: "About" },
+] as const;
 
-export function Header() {
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+interface HeaderProps {
+  blogs?: BlogItem[];
+}
+
+export function Header({ blogs = [] }: HeaderProps) {
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    const id = requestAnimationFrame(() => setMounted(true));
+    return () => cancelAnimationFrame(id);
+  }, []);
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-border bg-background">
-      <nav className="mx-auto flex h-16 max-w-6xl items-center justify-between px-4 sm:px-6 lg:px-8">
-        {/* Logo */}
+    <header
+      className={`fixed top-0 right-0 left-0 z-50 transition-all duration-700 ease-out md:top-2 md:left-1/2 md:w-full md:max-w-6xl md:-translate-x-1/2 md:px-3 ${
+        mounted ? "translate-y-0 opacity-100" : "-translate-y-4 opacity-0"
+      }`}
+    >
+      <div className="flex items-center justify-between border-b border-neutral-200 bg-background/90 px-4 py-2.5 backdrop-blur-md md:overflow-hidden md:rounded-2xl md:border md:border-border/50 md:shadow-lg md:shadow-black/5 dark:border-neutral-700 dark:md:shadow-black/20">
         <Link
           href="/"
-          className="flex items-center gap-2 text-lg font-bold tracking-tight text-foreground"
+          className="group border-0 outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:outline"
         >
-          <span className="text-xl">{SITE_CONFIG.name}</span>
+          <span className="text-xl font-bold tracking-tight text-foreground transition-all duration-300 group-hover:scale-105">
+            {SITE_CONFIG.name}
+          </span>
         </Link>
-
-        {/* Desktop Navigation */}
-        <div className="hidden items-center gap-8 md:flex">
-          {navLinks.map((link) => (
-            <Link
-              key={link.href}
-              href={link.href}
-              className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
-            >
-              {link.label}
-            </Link>
-          ))}
-        </div>
-
-        {/* Right side - Theme */}
-        <div className="hidden items-center md:flex">
-          <ThemeToggle />
-        </div>
-
-        {/* Mobile menu button */}
-        <button
-          type="button"
-          className="rounded-md p-2 text-muted-foreground md:hidden"
-          onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-          aria-label="Toggle menu"
-        >
-          {mobileMenuOpen ? (
-            <X className="h-5 w-5" />
-          ) : (
-            <Menu className="h-5 w-5" />
-          )}
-        </button>
-      </nav>
-
-      {/* Mobile menu */}
-      {mobileMenuOpen && (
-        <div className="border-t border-border bg-background px-4 py-4 md:hidden">
-          <div className="flex flex-col gap-4">
-            {navLinks.map((link) => (
+        <div className="flex items-center justify-center gap-3">
+          <div className="hidden md:flex md:items-center md:gap-3">
+            {NAV_LINKS.map(({ href, label }) => (
               <Link
-                key={link.href}
-                href={link.href}
-                className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
-                onClick={() => setMobileMenuOpen(false)}
+                key={href}
+                href={href}
+                className="text-sm font-semibold text-muted-foreground transition-colors hover:text-foreground"
               >
-                {link.label}
+                {label}
               </Link>
             ))}
-            <div className="flex items-center pt-4 border-t border-border">
-              <ThemeToggle />
-            </div>
           </div>
+          <SearchCommand
+            blogs={blogs}
+            triggerClassName="h-8 min-h-8 w-20 min-w-0 md:w-32 lg:w-44"
+          />
+          <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-md border border-input bg-transparent text-muted-foreground shadow-sm transition-colors hover:bg-accent hover:text-accent-foreground">
+            <ThemeToggle />
+          </div>
+          <DropdownMenu>
+            <DropdownMenuTrigger
+              className="inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-md border border-input bg-transparent text-muted-foreground shadow-sm transition-colors hover:bg-accent hover:text-accent-foreground focus-visible:ring-1 focus-visible:ring-ring focus-visible:outline-none md:hidden"
+              aria-label="Open menu"
+            >
+              <Menu className="h-4 w-4" />
+            </DropdownMenuTrigger>
+            <DropdownMenuContent align="end">
+              {NAV_LINKS.map(({ href, label }) => (
+                <DropdownMenuItem key={href} asChild>
+                  <Link
+                    href={href}
+                    className="flex cursor-pointer items-center outline-none"
+                  >
+                    {label}
+                  </Link>
+                </DropdownMenuItem>
+              ))}
+            </DropdownMenuContent>
+          </DropdownMenu>
         </div>
-      )}
+      </div>
     </header>
   );
 }
