@@ -1,5 +1,5 @@
 import { getBlogPosts } from "@/blogs/data/mdx";
-import { ViewAllLink } from "@/components/view-all-link";
+import { CTAButton } from "@/components/ui/cta-button";
 import SectionHeading from "@/components/section-heading";
 import { AnimatedBlogList } from "./animated-blog-list";
 
@@ -24,7 +24,9 @@ export function BlogSection() {
           <AnimatedBlogList posts={sorted} />
         )}
         <div className="flex justify-center pt-2">
-          <ViewAllLink href="/blogs" />
+          <CTAButton href="/blogs" variant="onLight">
+            View All
+          </CTAButton>
         </div>
       </div>
     </section>

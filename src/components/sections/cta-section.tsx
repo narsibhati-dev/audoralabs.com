@@ -2,8 +2,9 @@
 
 import Link from "next/link";
 import { SITE_CONFIG } from "@/config/site";
-import { ArrowUpRight, Github } from "lucide-react";
+import { Github } from "lucide-react";
 import { motion } from "motion/react";
+import { CTAButton } from "@/components/ui/cta-button";
 
 const MotionLink = motion.create(Link);
 
@@ -52,36 +53,9 @@ export function CTASection() {
           transition={{ ...staggerTransition, delay: 0.2 }}
         >
           {/* Primary CTA */}
-          <motion.div whileHover="hover">
-            <MotionLink
-              href={`mailto:hello@audoralabs.com`}
-              className="group inline-flex items-center gap-2 rounded-lg bg-white px-6 py-3 text-sm font-medium text-neutral-900 ring-2 ring-white/20 ring-offset-2 ring-offset-neutral-900 transition-all hover:bg-neutral-100 active:scale-95"
-              whileHover="hover"
-            >
-              Start a Conversation
-              <div className="relative h-4 w-4 overflow-hidden">
-                <motion.div
-                  variants={{
-                    hover: { x: "150%", y: "-150%" },
-                  }}
-                  transition={{ duration: 0.3, ease: "easeInOut" }}
-                  className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
-                >
-                  <ArrowUpRight className="h-4 w-4" />
-                </motion.div>
-                <motion.div
-                  initial={{ x: "-150%", y: "150%" }}
-                  variants={{
-                    hover: { x: "0%", y: "0%" },
-                  }}
-                  transition={{ duration: 0.3, ease: "easeInOut" }}
-                  className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
-                >
-                  <ArrowUpRight className="h-4 w-4" />
-                </motion.div>
-              </div>
-            </MotionLink>
-          </motion.div>
+          <CTAButton href="mailto:hello@audoralabs.com" variant="onDark">
+            Start a Conversation
+          </CTAButton>
 
           {/* Secondary CTA */}
           <motion.div whileHover="hover">

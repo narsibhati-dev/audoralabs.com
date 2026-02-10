@@ -5,7 +5,6 @@ import { clsx } from "clsx";
 import { motion } from "motion/react";
 import { Badge } from "@/components/ui/badge";
 import {
-  ArrowUpRight,
   Video,
   Activity,
   FileText,
@@ -14,6 +13,7 @@ import {
   Github,
 } from "lucide-react";
 import type { Product } from "@/data/products";
+import { CardViewLink } from "@/components/ui/card-view-link";
 
 const iconMap: Record<string, React.ReactNode> = {
   video: <Video className="h-5 w-5" />,
@@ -36,9 +36,15 @@ const MotionLink = motion.create(Link);
 interface ProductCardProps {
   product: Product;
   className?: string;
+  /** Use "dark" when the card is inside a dark section (e.g. dark background). */
+  sectionVariant?: "light" | "dark";
 }
 
-export function ProductCard({ product, className }: ProductCardProps) {
+export function ProductCard({
+  product,
+  className,
+  sectionVariant = "light",
+}: ProductCardProps) {
   const { label, variant } = statusConfig[product.status];
   const hasLinks = product.siteUrl || product.githubUrl;
   const productHref = `/products/${product.id}`;
@@ -140,13 +146,11 @@ export function ProductCard({ product, className }: ProductCardProps) {
               <span className="text-sm text-muted-foreground">Coming soon</span>
             )}
           </div>
-          <Link
+          <CardViewLink
             href={productHref}
-            className="flex shrink-0 translate-x-1 items-center justify-center opacity-0 text-muted-foreground transition-all duration-200 group-hover:translate-x-0 group-hover:opacity-100 group-hover:text-foreground"
-            aria-label={`View ${product.name}`}
-          >
-            <ArrowUpRight className="h-5 w-5" />
-          </Link>
+            ariaLabel={`View ${product.name}`}
+            variant={sectionVariant}
+          />
         </div>
       </div>
     </motion.div>

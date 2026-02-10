@@ -3,7 +3,8 @@
 import Link from "next/link";
 import { SITE_CONFIG } from "@/config/site";
 import { Badge } from "@/components/ui/badge";
-import { ArrowUpRight, Github } from "lucide-react";
+import { Github } from "lucide-react";
+import { CTAButton } from "@/components/ui/cta-button";
 import { motion, useScroll, useTransform } from "motion/react";
 
 const MotionLink = motion.create(Link);
@@ -177,36 +178,9 @@ export function HeroSection() {
           className="flex flex-col items-center justify-center gap-4 sm:flex-row"
         >
           {/* Primary CTA */}
-          <motion.div whileHover="hover">
-            <MotionLink
-              href="#products"
-              className="group inline-flex items-center gap-2 rounded-lg bg-foreground px-6 py-3 text-sm font-medium text-background ring-2 ring-foreground/10 ring-offset-2 ring-offset-background transition-all hover:bg-foreground/90 active:scale-95"
-              whileHover="hover"
-            >
-              View Products
-              <div className="relative h-4 w-4 overflow-hidden">
-                <motion.div
-                  variants={{
-                    hover: { x: "150%", y: "-150%" },
-                  }}
-                  transition={{ duration: 0.3, ease: "easeInOut" }}
-                  className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
-                >
-                  <ArrowUpRight className="h-4 w-4" />
-                </motion.div>
-                <motion.div
-                  initial={{ x: "-150%", y: "150%" }}
-                  variants={{
-                    hover: { x: "0%", y: "0%" },
-                  }}
-                  transition={{ duration: 0.3, ease: "easeInOut" }}
-                  className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
-                >
-                  <ArrowUpRight className="h-4 w-4" />
-                </motion.div>
-              </div>
-            </MotionLink>
-          </motion.div>
+          <CTAButton href="#products" variant="primary">
+            View Products
+          </CTAButton>
 
           {/* Secondary CTA */}
           <motion.div whileHover="hover">

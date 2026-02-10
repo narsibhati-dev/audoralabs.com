@@ -7,10 +7,10 @@ import {
   StaggerItem,
 } from "@/components/ui/stagger-container";
 import { AnimateOnScroll } from "@/components/ui/animate-on-scroll";
-import { ArrowUpRight, Calendar } from "lucide-react";
+import { Calendar } from "lucide-react";
 import { motion } from "motion/react";
-
-const MotionLink = motion.create(Link);
+import { CardViewLink } from "@/components/ui/card-view-link";
+import { CTAButton } from "@/components/ui/cta-button";
 
 type BlogPost = {
   slug: string;
@@ -56,9 +56,8 @@ export function BlogSectionClient({ posts }: BlogSectionClientProps) {
           {/* Featured Post */}
           {featured && (
             <AnimateOnScroll className="lg:col-span-2">
-              <MotionLink
-                href={`/blogs/${featured.slug}`}
-                className="group block overflow-hidden rounded-xl border border-border bg-gradient-to-b from-neutral-50 to-neutral-100 dark:from-neutral-900 dark:to-neutral-950"
+              <motion.div
+                className="group flex flex-col overflow-hidden rounded-xl border border-border bg-gradient-to-b from-neutral-50 to-neutral-100 dark:from-neutral-900 dark:to-neutral-950"
                 initial={false}
                 whileHover={{
                   scale: 1.01,
@@ -67,7 +66,10 @@ export function BlogSectionClient({ posts }: BlogSectionClientProps) {
                   transition: { type: "spring", stiffness: 300, damping: 25 },
                 }}
               >
-                <div className="p-6 sm:p-8">
+                <Link
+                  href={`/blogs/${featured.slug}`}
+                  className="flex flex-1 flex-col p-6 sm:p-8"
+                >
                   <h3 className="mb-3 text-xl font-semibold text-foreground transition-colors group-hover:text-muted-foreground sm:text-2xl">
                     {featured.title}
                   </h3>
@@ -87,8 +89,15 @@ export function BlogSectionClient({ posts }: BlogSectionClientProps) {
                       )}
                     </span>
                   </div>
+                </Link>
+                <div className="flex items-center justify-end px-6 pb-6 pt-0">
+                  <CardViewLink
+                    href={`/blogs/${featured.slug}`}
+                    ariaLabel={`Read ${featured.title}`}
+                    variant="dark"
+                  />
                 </div>
-              </MotionLink>
+              </motion.div>
             </AnimateOnScroll>
           )}
 
@@ -97,19 +106,25 @@ export function BlogSectionClient({ posts }: BlogSectionClientProps) {
             <StaggerContainer className="flex flex-col gap-4">
               {recent.map((post) => (
                 <StaggerItem key={post.slug}>
-                  <Link
-                    href={`/blogs/${post.slug}`}
-                    className="group block rounded-xl border border-border bg-gradient-to-b from-neutral-50 to-neutral-100 p-4 transition-colors hover:border-neutral-400 dark:from-neutral-900 dark:to-neutral-950 dark:hover:border-neutral-600 hover:shadow-md"
-                  >
-                    <h4 className="mb-2 font-semibold text-foreground transition-colors group-hover:text-muted-foreground">
-                      <span className="relative inline-block after:absolute after:left-0 after:bottom-0 after:h-px after:w-0 after:bg-muted-foreground after:transition-all after:duration-200 group-hover:after:w-full">
-                        {post.title}
-                      </span>
-                    </h4>
-                    <p className="line-clamp-2 text-sm text-muted-foreground">
-                      {post.summary}
-                    </p>
-                  </Link>
+                  <div className="group flex flex-col rounded-xl border border-border bg-gradient-to-b from-neutral-50 to-neutral-100 p-4 transition-colors hover:border-neutral-400 dark:from-neutral-900 dark:to-neutral-950 dark:hover:border-neutral-600 hover:shadow-md">
+                    <Link href={`/blogs/${post.slug}`} className="flex-1">
+                      <h4 className="mb-2 font-semibold text-foreground transition-colors group-hover:text-muted-foreground">
+                        <span className="relative inline-block after:absolute after:left-0 after:bottom-0 after:h-px after:w-0 after:bg-muted-foreground after:transition-all after:duration-200 group-hover:after:w-full">
+                          {post.title}
+                        </span>
+                      </h4>
+                      <p className="line-clamp-2 text-sm text-muted-foreground">
+                        {post.summary}
+                      </p>
+                    </Link>
+                    <div className="mt-2 flex justify-end">
+                      <CardViewLink
+                        href={`/blogs/${post.slug}`}
+                        ariaLabel={`Read ${post.title}`}
+                        variant="dark"
+                      />
+                    </div>
+                  </div>
                 </StaggerItem>
               ))}
             </StaggerContainer>
@@ -119,34 +134,9 @@ export function BlogSectionClient({ posts }: BlogSectionClientProps) {
         {/* View All Link */}
         <AnimateOnScroll delay={400}>
           <div className="mt-12 text-center">
-            <MotionLink
-              href="/blogs"
-              className="group inline-flex items-center gap-2 rounded-lg bg-white px-6 py-3 text-sm font-medium text-neutral-900 ring-2 ring-white/20 ring-offset-2 ring-offset-neutral-900 transition-all hover:bg-neutral-100 active:scale-95"
-              whileHover="hover"
-            >
+            <CTAButton href="/blogs" variant="onDark">
               View All Articles
-              <div className="relative h-4 w-4 overflow-hidden">
-                <motion.div
-                  variants={{
-                    hover: { x: "150%", y: "-150%" },
-                  }}
-                  transition={{ duration: 0.3, ease: "easeInOut" }}
-                  className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
-                >
-                  <ArrowUpRight className="h-4 w-4" />
-                </motion.div>
-                <motion.div
-                  initial={{ x: "-150%", y: "150%" }}
-                  variants={{
-                    hover: { x: "0%", y: "0%" },
-                  }}
-                  transition={{ duration: 0.3, ease: "easeInOut" }}
-                  className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
-                >
-                  <ArrowUpRight className="h-4 w-4" />
-                </motion.div>
-              </div>
-            </MotionLink>
+            </CTAButton>
           </div>
         </AnimateOnScroll>
       </div>
