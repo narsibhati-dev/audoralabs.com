@@ -1,0 +1,43 @@
+---
+title: "Introducing Audora: Remote Recording for Podcasters and Creators"
+publishedAt: "2026-02-10"
+summary: "An overview of Audora, our remote audio and video recording platform built with WebRTC and scalable media pipelines."
+---
+
+Remote recording has become the norm for podcasters and content creators, but the experience is still full of friction. Dropped frames, out-of-sync audio, and tools that scale poorly when you add guests or higher quality leave many teams cobbling together workarounds. We built **Audora** to fix that: a remote audio and video recording platform designed for high-quality capture and real-time collaboration.
+
+## The problem with remote recording today
+
+Whether you're recording a podcast with a guest in another time zone or producing a video series with a distributed team, you've likely run into the same issues. Consumer tools like Zoom or Google Meet compress everything for real-time chat, so what you record often isn't suitable for release. Dedicated recording tools can be expensive, inflexible, or built around a single host and one guest—not the reality of modern shows with multiple co-hosts and remote participants. And when something goes wrong—a connection blip, a misconfigured mic—you might not notice until the edit, when it's too late.
+
+We wanted a platform that treats remote recording as a first-class production workflow: multi-guest, high quality, and reliable at scale.
+
+## What is Audora?
+
+Audora is a remote recording platform built for podcasters and content creators who care about quality and collaboration. We focus on **high-quality capture** (audio and video), **real-time collaboration** with multiple guests and co-hosts, and **scalable media pipelines** that can handle many concurrent sessions without degrading. The goal is simple: you run your session in the browser, everyone gets recorded in high quality on our infrastructure, and you get assets you can actually use—without fighting sync issues or re-recording.
+
+## Key features
+
+- **WebRTC-based recording** — Sessions run in the browser with low latency; we capture and process media on the server so you get consistent quality regardless of local setup.
+
+- **Multi-guest collaboration** — Invite co-hosts and guests, see and hear everyone in real time, and have every participant recorded as separate tracks (or a mixed output) for easier editing.
+
+- **Scalable media pipelines** — Our backend is built to handle thousands of concurrent sessions, so quality and reliability don't drop when you grow your show or run events.
+
+- **Automatic transcription and post-production tools** — From transcripts to basic post-processing, we're adding features that shorten the path from “recorded” to “published.”
+
+- **Built-in editor** — Quick turnaround on content without leaving the platform: trim, adjust levels, and export so you can ship faster.
+
+## Who it's for
+
+Audora is for **podcasters**, **content creators**, and **media teams** who record remotely and want broadcast-quality results without the complexity of self-hosting or the limitations of generic video calls. If you've outgrown recording via Zoom or you're tired of stitching together multiple tools for capture, sync, and edit, Audora is built for that workflow.
+
+## Built for reliability and scale
+
+Under the hood, Audora uses **WebRTC** for real-time media, **Rust** for performance-critical recording and pipeline logic, **PostgreSQL** for persistence and metadata, and **React** and **TypeScript** for the app you use in the browser. We chose this stack so we can deliver low-latency sessions and reliable recording at scale, while keeping the product fast and maintainable.
+
+## What's next
+
+Audora is in active development. We're focused on nailing the core recording and collaboration experience, then expanding transcription, editing, and integrations. If you're interested in early access or want to share how you record today, we'd love to hear from you.
+
+Learn more at [audora.io](https://audora.io).

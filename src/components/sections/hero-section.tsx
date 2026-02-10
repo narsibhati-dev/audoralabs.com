@@ -180,7 +180,7 @@ export function HeroSection() {
           <motion.div whileHover="hover">
             <MotionLink
               href="#products"
-              className="group inline-flex items-center gap-2 rounded-lg bg-foreground px-6 py-3 text-sm font-medium text-background transition-all hover:bg-foreground/90 active:scale-95"
+              className="group inline-flex items-center gap-2 rounded-lg bg-foreground px-6 py-3 text-sm font-medium text-background ring-2 ring-foreground/10 ring-offset-2 ring-offset-background transition-all hover:bg-foreground/90 active:scale-95"
               whileHover="hover"
             >
               View Products

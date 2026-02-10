@@ -7,7 +7,7 @@ import {
   StaggerItem,
 } from "@/components/ui/stagger-container";
 import { AnimateOnScroll } from "@/components/ui/animate-on-scroll";
-import { ArrowRight, Calendar } from "lucide-react";
+import { ArrowUpRight, Calendar } from "lucide-react";
 import { motion } from "motion/react";
 
 const MotionLink = motion.create(Link);
@@ -116,13 +116,34 @@ export function BlogSectionClient({ posts }: BlogSectionClientProps) {
         {/* View All Link */}
         <AnimateOnScroll delay={400}>
           <div className="mt-12 text-center">
-            <Link
+            <MotionLink
               href="/blogs"
-              className="inline-flex items-center gap-2 text-sm font-medium text-foreground transition-colors hover:text-muted-foreground"
+              className="group inline-flex items-center gap-2 rounded-lg bg-white px-6 py-3 text-sm font-medium text-neutral-900 ring-2 ring-white/20 ring-offset-2 ring-offset-neutral-900 transition-all hover:bg-neutral-100 active:scale-95"
+              whileHover="hover"
             >
               View All Articles
-              <ArrowRight className="h-4 w-4" />
-            </Link>
+              <div className="relative h-4 w-4 overflow-hidden">
+                <motion.div
+                  variants={{
+                    hover: { x: "150%", y: "-150%" },
+                  }}
+                  transition={{ duration: 0.3, ease: "easeInOut" }}
+                  className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
+                >
+                  <ArrowUpRight className="h-4 w-4" />
+                </motion.div>
+                <motion.div
+                  initial={{ x: "-150%", y: "150%" }}
+                  variants={{
+                    hover: { x: "0%", y: "0%" },
+                  }}
+                  transition={{ duration: 0.3, ease: "easeInOut" }}
+                  className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
+                >
+                  <ArrowUpRight className="h-4 w-4" />
+                </motion.div>
+              </div>
+            </MotionLink>
           </div>
         </AnimateOnScroll>
       </div>
