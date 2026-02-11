@@ -59,7 +59,7 @@ export function ProductCard({
       }}
       transition={{ type: "spring", stiffness: 300, damping: 25 }}
     >
-      <div className="relative flex h-full flex-col overflow-hidden rounded-xl border border-border bg-gradient-to-b from-neutral-50 to-neutral-100 transition-all duration-300 group-hover:shadow-lg group-hover:border-neutral-400 dark:from-neutral-900 dark:to-neutral-950 dark:group-hover:border-neutral-600">
+      <div className="relative flex h-full flex-col overflow-hidden rounded-xl border border-border bg-linear-to-b from-neutral-50 to-neutral-100 transition-all duration-300 group-hover:shadow-lg group-hover:border-neutral-400 dark:from-neutral-900 dark:to-neutral-950 dark:group-hover:border-neutral-600">
         {/* Shimmer overlay on hover */}
         <div className="pointer-events-none absolute inset-0 z-10 overflow-hidden rounded-xl opacity-0 transition-opacity duration-300 group-hover:opacity-100">
           <div className="absolute inset-0 -translate-x-full bg-linear-to-r from-transparent via-neutral-200/20 to-transparent transition-transform duration-500 group-hover:translate-x-full dark:via-neutral-600/20" />

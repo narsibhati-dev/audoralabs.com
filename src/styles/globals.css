@@ -1,5 +1,21 @@
 @import "tailwindcss";
 
+@font-face {
+  font-family: "Sentient";
+  src: url("/Sentient-Extralight.woff") format("woff");
+  font-weight: 200;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Sentient";
+  src: url("/Sentient-LightItalic.woff") format("woff");
+  font-weight: 300;
+  font-style: italic;
+  font-display: swap;
+}
+
 /* Custom dark variant for Tailwind CSS v4 */
 @custom-variant dark (&:where(.dark, .dark *));
 
@@ -112,8 +128,8 @@
   --color-input: var(--input);
   --color-ring: var(--ring);
   --radius-radius: var(--radius);
-  --font-sans: var(--font-inter), system-ui, sans-serif;
-  --font-mono: var(--font-jetbrains-mono), monospace;
+  --font-mono: var(--font-geist-mono); /* Geist Mono - monospace */
+  --font-sentient: "Sentient", sans-serif; /* Sentient - elegant body */
 
   /* Neutral colors */
   --color-neutral-950: var(--neutral-950);
@@ -136,7 +152,7 @@
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: var(--font-inter), system-ui, sans-serif;
+  font-family: var(--font-sentient);
 }
 
 /* Hero gradient - Dark sophisticated */
@@ -173,7 +189,7 @@ body {
 
 /* Grid pattern overlay */
 .grid-pattern {
-  background-image: 
+  background-image:
     linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
     linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
   background-size: 60px 60px;
@@ -181,7 +197,10 @@ body {
 
 /* Dot pattern overlay */
 .dot-pattern {
-  background-image: radial-gradient(rgba(255, 255, 255, 0.1) 1px, transparent 1px);
+  background-image: radial-gradient(
+    rgba(255, 255, 255, 0.1) 1px,
+    transparent 1px
+  );
   background-size: 20px 20px;
 }
 
@@ -207,7 +226,8 @@ body {
 }
 
 @keyframes float {
-  0%, 100% {
+  0%,
+  100% {
     transform: translateY(0);
   }
   50% {
@@ -216,7 +236,8 @@ body {
 }
 
 @keyframes pulse-border {
-  0%, 100% {
+  0%,
+  100% {
     border-color: rgba(255, 255, 255, 0.1);
   }
   50% {
@@ -241,11 +262,21 @@ body {
 }
 
 /* Stagger delays */
-.delay-100 { animation-delay: 100ms; }
-.delay-200 { animation-delay: 200ms; }
-.delay-300 { animation-delay: 300ms; }
-.delay-400 { animation-delay: 400ms; }
-.delay-500 { animation-delay: 500ms; }
+.delay-100 {
+  animation-delay: 100ms;
+}
+.delay-200 {
+  animation-delay: 200ms;
+}
+.delay-300 {
+  animation-delay: 300ms;
+}
+.delay-400 {
+  animation-delay: 400ms;
+}
+.delay-500 {
+  animation-delay: 500ms;
+}
 
 /* Smooth scroll */
 html {
@@ -265,7 +296,7 @@ html {
 
 /* Terminal styling */
 .terminal {
-  font-family: var(--font-jetbrains-mono), 'JetBrains Mono', monospace;
+  font-family: var(--font-geist-mono), "Geist Mono", monospace;
   background: rgba(0, 0, 0, 0.8);
   border: 1px solid rgba(255, 255, 255, 0.1);
 }

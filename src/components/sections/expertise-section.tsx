@@ -19,7 +19,7 @@ export function ExpertiseSection() {
   return (
     <section
       id="expertise"
-      className="relative py-20 sm:py-28 dark bg-[#0a0a0a] text-foreground"
+      className="relative pt-12 sm:pt-16 pb-20 sm:pb-28 dark bg-[#0a0a0a] text-foreground"
     >
       {/* Subtle grid pattern overlay */}
       {/* Dot pattern overlay with radial fade */}
@@ -43,12 +43,13 @@ export function ExpertiseSection() {
 
         <StaggerContainer className="mt-16 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:gap-8">
           {expertiseAreas.map((area, index) => (
-            <StaggerItem key={area.title}>
+            <StaggerItem key={area.title} className="flex">
               <IconCard
                 icon={iconMap[area.icon] ?? <Activity className="h-6 w-6" />}
                 title={area.title}
                 description={area.description}
                 index={index}
+                className="w-full"
               />
             </StaggerItem>
           ))}

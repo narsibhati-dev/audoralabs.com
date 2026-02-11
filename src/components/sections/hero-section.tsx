@@ -3,10 +3,10 @@
 import Link from "next/link";
 import { SITE_CONFIG } from "@/config/site";
 import { Badge } from "@/components/ui/badge";
-import { Github } from "lucide-react";
+import { GithubIcon } from "lucide-react";
 import { CTAButton } from "@/components/ui/cta-button";
 import { motion, useScroll, useTransform } from "motion/react";
-
+import { ParticleCanvasDynamic } from "@/components/gl/particle-canvas-dynamic";
 const MotionLink = motion.create(Link);
 
 // Code snippets that "leak" across the hero
@@ -70,7 +70,13 @@ export function HeroSection() {
   const codeParallaxY = useTransform(scrollYProgress, [0, 0.25], [0, 60]);
 
   return (
-    <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden bg-background">
+    <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden bg-neutral-950 -mt-14 md:-mt-16 pt-14 md:pt-16">
+      <ParticleCanvasDynamic />
+      {/* Bottom fade so particles blend into expertise section */}
+      <div
+        className="pointer-events-none absolute inset-0 z-1 bg-[linear-gradient(to_bottom,transparent_0,transparent_95%,#0a0a0a_100%)]"
+        aria-hidden
+      />
       {/* Floating terminal snippets */}
       {terminalSnippets.map((snippet, i) => (
         <div
@@ -92,14 +98,14 @@ export function HeroSection() {
                 delay: 1.2 + i * 0.2,
               },
             }}
-            className="rounded-lg border border-border bg-card p-4 shadow-lg"
+            className="rounded-lg border border-white/10 bg-black/60 backdrop-blur-sm p-4 shadow-lg"
           >
             <div className="flex items-center gap-1.5 mb-3">
-              <div className="h-2.5 w-2.5 rounded-full bg-neutral-400 dark:bg-neutral-600" />
-              <div className="h-2.5 w-2.5 rounded-full bg-neutral-400 dark:bg-neutral-600" />
-              <div className="h-2.5 w-2.5 rounded-full bg-neutral-400 dark:bg-neutral-600" />
+              <div className="h-2.5 w-2.5 rounded-full bg-neutral-500" />
+              <div className="h-2.5 w-2.5 rounded-full bg-neutral-500" />
+              <div className="h-2.5 w-2.5 rounded-full bg-neutral-500" />
             </div>
-            <pre className="font-mono text-xs text-muted-foreground whitespace-pre">
+            <pre className="font-mono text-xs text-neutral-300 whitespace-pre">
               {snippet.code}
             </pre>
           </motion.div>
@@ -116,7 +122,7 @@ export function HeroSection() {
             y: codeParallaxY,
           }}
         >
-          <pre className="font-mono text-xs leading-relaxed text-neutral-300 dark:text-neutral-700 whitespace-pre opacity-50">
+          <pre className="font-mono text-xs leading-relaxed text-white/20 whitespace-pre">
             {snippet.code}
           </pre>
         </motion.div>
@@ -147,7 +153,10 @@ export function HeroSection() {
             }}
             className="inline-block rounded-full"
           >
-            <Badge variant="outline" className="mb-6 ring-0">
+            <Badge
+              variant="outline"
+              className="mb-6 ring-0 border-white/20 text-neutral-200 bg-black/40 backdrop-blur-sm"
+            >
               Product Studio
             </Badge>
           </motion.span>
@@ -157,7 +166,7 @@ export function HeroSection() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.1 }}
-          className="mb-6 text-4xl font-bold tracking-tight text-foreground sm:text-5xl md:text-6xl lg:text-7xl"
+          className="mb-6 text-4xl font-bold tracking-tight font-sentient text-white [text-shadow:0_0_20px_rgba(0,0,0,0.8),0_0_40px_rgba(0,0,0,0.5)] sm:text-5xl md:text-6xl lg:text-7xl"
         >
           {SITE_CONFIG.tagline}
         </motion.h1>
@@ -166,7 +175,7 @@ export function HeroSection() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="mx-auto mb-10 max-w-2xl text-lg text-muted-foreground sm:text-xl"
+          className="mx-auto mb-10 max-w-2xl text-lg text-neutral-300 [text-shadow:0_0_12px_rgba(0,0,0,0.8)] sm:text-xl"
         >
           {SITE_CONFIG.shortDescription}
         </motion.p>
@@ -178,7 +187,7 @@ export function HeroSection() {
           className="flex flex-col items-center justify-center gap-4 sm:flex-row"
         >
           {/* Primary CTA */}
-          <CTAButton href="#products" variant="primary">
+          <CTAButton href="#products" variant="onDark">
             View Products
           </CTAButton>
 
@@ -188,7 +197,7 @@ export function HeroSection() {
               href={SITE_CONFIG.links.twitter}
               target="_blank"
               rel="noopener noreferrer"
-              className="group inline-flex items-center gap-2 rounded-lg border border-border bg-card px-6 py-3 text-sm font-medium text-foreground transition-all hover:bg-muted active:scale-95"
+              className="group inline-flex items-center gap-2 rounded-lg border border-white/20 bg-black/40 backdrop-blur-sm px-6 py-3 text-sm font-medium text-white transition-all hover:bg-black/60 active:scale-95"
               whileHover="hover"
             >
               Follow the Build
@@ -207,9 +216,9 @@ export function HeroSection() {
             href={SITE_CONFIG.links.github}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 text-sm text-muted-foreground transition-colors hover:text-foreground"
+            className="inline-flex items-center gap-2 text-sm text-neutral-400 [text-shadow:0_0_8px_rgba(0,0,0,0.6)] transition-colors hover:text-white"
           >
-            <Github className="h-4 w-4" />
+            <GithubIcon className="h-4 w-4" />
             Check out our open source work
           </Link>
         </motion.div>

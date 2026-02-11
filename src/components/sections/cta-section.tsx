@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { SITE_CONFIG } from "@/config/site";
-import { Github } from "lucide-react";
+import { GithubIcon } from "lucide-react";
 import { motion } from "motion/react";
 import { CTAButton } from "@/components/ui/cta-button";
 
@@ -66,7 +66,7 @@ export function CTASection() {
               className="group inline-flex items-center gap-2 rounded-lg border border-neutral-700 bg-neutral-800 px-6 py-3 text-sm font-medium text-white transition-all hover:bg-neutral-700 hover:border-neutral-600 active:scale-95"
               whileHover="hover"
             >
-              <Github className="h-4 w-4" />
+              <GithubIcon className="h-4 w-4" />
               View Open Source Projects
             </MotionLink>
           </motion.div>
