@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { SITE_CONFIG } from "@/config/site";
-import { Github, Linkedin, Twitter } from "lucide-react";
+import { GithubIcon, Linkedin, Twitter } from "lucide-react";
 
 const navLinks = [
   { href: "/products", label: "Products" },
@@ -10,7 +10,7 @@ const navLinks = [
 
 const socialLinks = [
   { href: SITE_CONFIG.links.twitter, icon: Twitter, label: "X (Twitter)" },
-  { href: SITE_CONFIG.links.github, icon: Github, label: "GitHub" },
+  { href: SITE_CONFIG.links.github, icon: GithubIcon, label: "GitHub" },
   { href: SITE_CONFIG.links.linkedin, icon: Linkedin, label: "LinkedIn" },
 ];
 
