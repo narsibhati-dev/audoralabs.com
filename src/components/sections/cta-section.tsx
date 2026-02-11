@@ -52,31 +52,26 @@ export function CTASection() {
           viewport={{ once: true, amount: 0.3 }}
           transition={{ ...staggerTransition, delay: 0.2 }}
         >
-          {/* Primary CTA */}
-          <CTAButton
-            href="mailto:hello@audoralabs.com"
-            variant="onDark"
-            className="w-full max-w-sm sm:w-auto sm:max-w-none"
-          >
-            Start a Conversation
-          </CTAButton>
+          <div className="inline-flex flex-col items-stretch gap-4 sm:flex-row sm:items-center">
+            {/* Primary CTA */}
+            <CTAButton href="mailto:hello@audoralabs.com" variant="onDark">
+              Start a Conversation
+            </CTAButton>
 
-          {/* Secondary CTA */}
-          <motion.div
-            className="w-full max-w-sm sm:w-auto sm:max-w-none"
-            whileHover="hover"
-          >
-            <MotionLink
-              href={SITE_CONFIG.links.github}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group inline-flex w-full items-center justify-center gap-2 rounded-lg border border-neutral-700 bg-neutral-800 px-6 py-3 text-sm font-medium text-white transition-all hover:bg-neutral-700 hover:border-neutral-600 active:scale-95"
-              whileHover="hover"
-            >
-              <GithubIcon className="h-4 w-4" />
-              View Open Source Projects
-            </MotionLink>
-          </motion.div>
+            {/* Secondary CTA */}
+            <motion.div whileHover="hover">
+              <MotionLink
+                href={SITE_CONFIG.links.github}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group inline-flex w-full items-center justify-center gap-2 rounded-lg border border-neutral-700 bg-neutral-800 px-6 py-3 text-sm font-medium text-white transition-all hover:bg-neutral-700 hover:border-neutral-600 active:scale-95"
+                whileHover="hover"
+              >
+                <GithubIcon className="h-4 w-4" />
+                View Open Source Projects
+              </MotionLink>
+            </motion.div>
+          </div>
         </motion.div>
       </div>
     </section>

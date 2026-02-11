@@ -126,24 +126,22 @@ export function HeroSection() {
         </p>
 
         <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
-          {/* Primary CTA */}
-          <CTAButton
-            href="#products"
-            variant="onDark"
-            className="w-full max-w-sm sm:w-auto sm:max-w-none"
-          >
-            View Products
-          </CTAButton>
+          <div className="inline-flex flex-col items-stretch gap-4 sm:flex-row sm:items-center">
+            {/* Primary CTA */}
+            <CTAButton href="#products" variant="onDark">
+              View Products
+            </CTAButton>
 
-          {/* Secondary CTA */}
-          <Link
-            href={SITE_CONFIG.links.twitter}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="group inline-flex w-full max-w-sm items-center justify-center gap-2 rounded-lg border border-white/20 bg-black/40 backdrop-blur-sm px-6 py-3 text-sm font-medium text-white transition-all hover:bg-black/60 active:scale-95 sm:w-auto sm:max-w-none"
-          >
-            Follow the Build
-          </Link>
+            {/* Secondary CTA */}
+            <Link
+              href={SITE_CONFIG.links.twitter}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group inline-flex items-center justify-center gap-2 rounded-lg border border-white/20 bg-black/40 backdrop-blur-sm px-6 py-3 text-sm font-medium text-white transition-all hover:bg-black/60 active:scale-95"
+            >
+              Follow the Build
+            </Link>
+          </div>
         </div>
 
         {/* GitHub CTA */}

@@ -133,8 +133,13 @@ export function BlogSectionClient({ posts }: BlogSectionClientProps) {
 
         {/* View All Link */}
         <AnimateOnScroll delay={400}>
-          <div className="mt-12 text-center">
-            <CTAButton href="/blogs" variant="onDark" external={true}>
+          <div className="mt-12 text-center w-full flex justify-center">
+            <CTAButton
+              href="/blogs"
+              variant="onDark"
+              external={true}
+              className="w-fit"
+            >
               View All Articles
             </CTAButton>
           </div>
