@@ -11,15 +11,15 @@ import { CheckCircle, TrendingUp, Eye, Shield } from "lucide-react";
 import { motion } from "motion/react";
 
 const iconMap: Record<Principle["iconName"], React.ReactNode> = {
-  "check-circle": <CheckCircle className="h-6 w-6" />,
-  "trending-up": <TrendingUp className="h-6 w-6" />,
-  eye: <Eye className="h-6 w-6" />,
-  shield: <Shield className="h-6 w-6" />,
+  "check-circle": <CheckCircle className="h-5 w-5" />,
+  "trending-up": <TrendingUp className="h-5 w-5" />,
+  eye: <Eye className="h-5 w-5" />,
+  shield: <Shield className="h-5 w-5" />,
 };
 
 export function PhilosophySection() {
   return (
-    <section className="py-20 sm:py-28">
+    <section className="py-16 sm:py-20">
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         <AnimateOnScroll>
           <div className="text-center">
@@ -33,37 +33,24 @@ export function PhilosophySection() {
           </div>
         </AnimateOnScroll>
 
-        <StaggerContainer className="mt-16 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4">
+        <StaggerContainer className="mt-12 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4 lg:gap-6">
           {principles.map((principle) => (
-            <StaggerItem key={principle.title}>
+            <StaggerItem key={principle.title} className="flex">
               <motion.div
-                className="group text-center"
+                className="group flex h-full w-full flex-col rounded-xl border border-border bg-linear-to-b from-card-gradient-from to-card-gradient-to p-4 text-center transition-all hover:border-subtle-border hover:shadow-lg"
                 initial={false}
                 whileHover={{
-                  y: -4,
+                  y: -2,
                   transition: { type: "spring", stiffness: 300, damping: 25 },
                 }}
               >
-                <motion.div
-                  className="mx-auto mb-4 inline-flex rounded-lg bg-muted p-4"
-                  initial={false}
-                  whileInView={{
-                    scale: [1, 1.08, 1],
-                    transition: {
-                      duration: 0.6,
-                      ease: "easeOut",
-                    },
-                  }}
-                  viewport={{ once: true, amount: 0.5 }}
-                >
-                  <div className="text-foreground">
-                    {iconMap[principle.iconName]}
-                  </div>
-                </motion.div>
-                <h3 className="mb-2 text-lg font-semibold text-foreground">
+                <div className="mb-3 inline-flex shrink-0 items-center justify-center self-center rounded-lg bg-muted p-2.5 text-foreground transition-transform duration-300 ease-out group-hover:scale-105 group-hover:rotate-3">
+                  {iconMap[principle.iconName]}
+                </div>
+                <h3 className="mb-1.5 shrink-0 text-base font-semibold text-foreground">
                   {principle.title}
                 </h3>
-                <p className="text-sm leading-relaxed text-muted-foreground">
+                <p className="flex-1 text-sm leading-relaxed text-muted-foreground">
                   {principle.description}
                 </p>
               </motion.div>
