@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { useEffect, useState } from "react";
 import { SITE_CONFIG } from "@/config/site";
 import { ThemeToggle } from "@/components/theme-toggle";
@@ -41,11 +42,18 @@ export function Header({ blogs = [] }: HeaderProps) {
       <div className="flex items-center justify-between border-b border-border bg-background px-4 py-2.5 md:overflow-hidden md:rounded-2xl md:border md:border-border md:shadow-lg md:shadow-black/5 dark:md:shadow-black/20">
         <Link
           href="/"
-          className="group border-0 outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:outline"
+          className="group flex items-center gap-2 border-0 outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:outline"
         >
-          <span className="text-xl font-bold tracking-tight text-foreground transition-all duration-300 group-hover:scale-105">
+          <Image
+            src="/logo.png"
+            alt="AudoraLabs logo"
+            width={36}
+            height={36}
+            className="h-9 w-9 shrink-0 transition-transform duration-300 group-hover:scale-105 rounded-lg"
+          />
+          {/* <span className="text-xl font-bold tracking-tight text-foreground transition-transform duration-300 group-hover:scale-105">
             {SITE_CONFIG.name}
-          </span>
+          </span> */}
         </Link>
         <div className="flex items-center justify-center gap-3">
           <div className="hidden md:flex md:items-center md:gap-3">
