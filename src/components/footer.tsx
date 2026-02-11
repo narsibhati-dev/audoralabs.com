@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { SITE_CONFIG } from "@/config/site";
-import { GithubIcon, Linkedin, Twitter } from "lucide-react";
+import { GithubIcon, LinkedinIcon, X } from "lucide-react";
 
 const navLinks = [
   { href: "/products", label: "Products" },
@@ -9,9 +9,9 @@ const navLinks = [
 ];
 
 const socialLinks = [
-  { href: SITE_CONFIG.links.twitter, icon: Twitter, label: "X (Twitter)" },
+  { href: SITE_CONFIG.links.twitter, icon: X, label: "X" },
   { href: SITE_CONFIG.links.github, icon: GithubIcon, label: "GitHub" },
-  { href: SITE_CONFIG.links.linkedin, icon: Linkedin, label: "LinkedIn" },
+  { href: SITE_CONFIG.links.linkedin, icon: LinkedinIcon, label: "LinkedIn" },
 ];
 
 export function Footer() {
