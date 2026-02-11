@@ -145,7 +145,8 @@
   --color-ring: var(--ring);
   --radius-radius: var(--radius);
   --font-mono: var(--font-geist-mono); /* Geist Mono - monospace */
-  --font-sentient: "Sentient", sans-serif; /* Sentient - elegant body */
+  --font-inter: var(--font-inter); /* Inter - elegant sans-serif */
+  --font-family-sentient: var(--font-inter), "Inter", sans-serif; /* Sentient fallback to Inter - Tailwind utility class */
 
   /* Semantic color tokens */
   --color-section-dark: var(--section-dark);

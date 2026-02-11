@@ -37,11 +37,29 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "weekly",
       priority: 1.0,
     },
+    {
+      url: `${siteUrl}/llms.txt`,
+      lastModified: currentDate,
+      changeFrequency: "weekly",
+      priority: 0.8,
+    },
+    {
+      url: `${siteUrl}/terms`,
+      lastModified: currentDate,
+      changeFrequency: "weekly",
+      priority: 0.8,
+    },
+    {
+      url: `${siteUrl}/privacy`,
+      lastModified: currentDate,
+      changeFrequency: "weekly",
+      priority: 0.8,
+    },
   ];
 
   // Blog posts
   const blogPosts: MetadataRoute.Sitemap = getBlogPosts().map((post) => ({
-    url: `${siteUrl}/blog/${post.slug}`,
+    url: `${siteUrl}/blogs/${post.slug}`,
     lastModified: post.metadata?.publishedAt
       ? new Date(post.metadata.publishedAt).toISOString()
       : currentDate,

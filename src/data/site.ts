@@ -32,7 +32,7 @@ const SITE_DATA = {
   links: {
     twitter: "https://x.com/audoralabs",
     github: "https://github.com/audoralabs",
-    linkedin: "https://linkedin.com/company/audoralabs",
+    linkedin: "https://www.linkedin.com/company/audora-labs",
   },
 };
 

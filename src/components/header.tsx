@@ -51,9 +51,9 @@ export function Header({ blogs = [] }: HeaderProps) {
             height={36}
             className="h-9 w-9 shrink-0 transition-transform duration-300 group-hover:scale-105 rounded-lg"
           />
-          {/* <span className="text-xl font-bold tracking-tight text-foreground transition-transform duration-300 group-hover:scale-105">
+          <span className="hidden md:inline text-xl font-bold tracking-tight font-sentient text-foreground transition-transform duration-300 group-hover:scale-105">
             {SITE_CONFIG.name}
-          </span> */}
+          </span>
         </Link>
         <div className="flex items-center justify-center gap-3">
           <div className="hidden md:flex md:items-center md:gap-3">
