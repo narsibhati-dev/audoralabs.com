@@ -9,14 +9,12 @@ interface BadgeProps {
 }
 
 const variantStyles: Record<BadgeVariant, string> = {
-  default:
-    "bg-neutral-100 text-neutral-700 dark:bg-neutral-800 dark:text-neutral-300",
+  default: "bg-muted text-foreground",
   success:
     "bg-emerald-500/10 text-emerald-600 dark:bg-emerald-400/10 dark:text-emerald-400",
   warning:
     "bg-amber-500/10 text-amber-600 dark:bg-amber-400/10 dark:text-amber-400",
-  outline:
-    "bg-transparent border border-neutral-300 text-neutral-600 dark:border-neutral-700 dark:text-neutral-400",
+  outline: "bg-transparent border border-border text-muted-foreground",
 };
 
 export function Badge({

@@ -51,7 +51,7 @@ export function SearchCommand({ blogs, triggerClassName }: SearchCommandProps) {
         type="button"
         onClick={() => setOpen(true)}
         className={cn(
-          "group relative inline-flex h-8 w-full items-center justify-start rounded-md border border-input bg-transparent px-3 py-1.5 text-sm font-medium whitespace-nowrap text-muted-foreground shadow-sm transition-colors hover:bg-accent hover:text-accent-foreground hover:border-accent focus-visible:ring-1 focus-visible:ring-ring focus-visible:outline-none disabled:pointer-events-none disabled:opacity-50 sm:pr-10 md:w-32 lg:w-44 dark:bg-transparent dark:hover:bg-neutral-800 dark:hover:text-foreground dark:hover:border-neutral-600",
+          "group relative inline-flex h-8 w-full items-center justify-start rounded-md border border-input bg-transparent px-3 py-1.5 text-sm font-medium whitespace-nowrap text-muted-foreground shadow-sm transition-colors hover:bg-accent hover:text-accent-foreground hover:border-accent focus-visible:ring-1 focus-visible:ring-ring focus-visible:outline-none disabled:pointer-events-none disabled:opacity-50 sm:pr-10 md:w-32 lg:w-44",
           triggerClassName,
         )}
       >
@@ -59,7 +59,7 @@ export function SearchCommand({ blogs, triggerClassName }: SearchCommandProps) {
         <span className="inline-flex min-w-0 truncate lg:hidden">
           Search...
         </span>
-        <kbd className="pointer-events-none absolute top-1.5 right-1.5 hidden h-5 items-center gap-1 rounded border border-border bg-muted px-1.5 font-mono text-[10px] font-medium text-muted-foreground select-none sm:flex group-hover:bg-muted/90 group-hover:border-border dark:group-hover:bg-neutral-700 dark:group-hover:text-foreground">
+        <kbd className="pointer-events-none absolute top-1.5 right-1.5 hidden h-5 items-center gap-1 rounded border border-border bg-muted px-1.5 font-mono text-[10px] font-medium text-muted-foreground select-none sm:flex group-hover:bg-muted/90 group-hover:border-border">
           <span className="text-xs">⌘</span>K
         </kbd>
       </button>

@@ -31,9 +31,9 @@ export function CTAButton({
     primary:
       "rounded-lg bg-foreground px-6 py-3 text-sm font-medium text-background ring-2 ring-foreground/10 ring-offset-2 ring-offset-background transition-all hover:bg-foreground/90 active:scale-95",
     onDark:
-      "rounded-lg bg-white px-6 py-3 text-sm font-medium text-neutral-900 ring-2 ring-white/20 ring-offset-2 ring-offset-neutral-900 transition-all hover:bg-neutral-100 active:scale-95",
+      "rounded-lg bg-white px-6 py-3 text-sm font-medium text-neutral-900 ring-2 ring-white/20 ring-offset-2 ring-offset-section-dark transition-all hover:bg-neutral-100 active:scale-95",
     onLight:
-      "rounded-lg bg-white px-6 py-3 text-sm font-medium text-neutral-900 shadow-sm ring-1 ring-neutral-200 transition-all hover:bg-neutral-50 hover:ring-neutral-300 active:scale-95 dark:bg-neutral-100 dark:text-neutral-900 dark:ring-neutral-300 dark:hover:bg-neutral-200",
+      "rounded-lg bg-white px-6 py-3 text-sm font-medium text-foreground shadow-sm ring-1 ring-border transition-all hover:bg-card-gradient-from hover:ring-subtle-border active:scale-95",
   };
 
   return (

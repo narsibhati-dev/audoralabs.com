@@ -14,10 +14,7 @@ function Table({ data }: { data: { headers: string[]; rows: string[][] } }) {
     </th>
   ));
   const rows = data.rows.map((row, index) => (
-    <tr
-      key={index}
-      className="border-t border-neutral-200 dark:border-neutral-700"
-    >
+    <tr key={index} className="border-t border-border">
       {row.map((cell, cellIndex) => (
         <td key={cellIndex} className="px-4 py-2 text-left">
           {cell}
@@ -30,9 +27,7 @@ function Table({ data }: { data: { headers: string[]; rows: string[][] } }) {
     <div className="my-6 w-full overflow-y-auto">
       <table className="w-full text-sm">
         <thead>
-          <tr className="border-b border-neutral-200 dark:border-neutral-700">
-            {headers}
-          </tr>
+          <tr className="border-b border-border">{headers}</tr>
         </thead>
         <tbody>{rows}</tbody>
       </table>

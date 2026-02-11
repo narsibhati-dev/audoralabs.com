@@ -21,10 +21,10 @@ export const CopyableCode = ({ code }: CopyableCodeProps) => {
   };
 
   return (
-    <div className="relative mx-auto mt-12 max-w-lg rounded-md border border-neutral-200 bg-neutral-200 p-4 pr-12 dark:border-neutral-800 dark:bg-neutral-900">
+    <div className="relative mx-auto mt-12 max-w-lg rounded-md border border-border bg-muted p-4 pr-12">
       <button
         onClick={handleCopy}
-        className="absolute top-3 right-3 inline-flex h-8 w-8 items-center justify-center rounded-md text-neutral-600 transition-colors hover:bg-neutral-300 hover:text-neutral-950 dark:text-neutral-400 dark:hover:bg-neutral-800 dark:hover:text-neutral-200"
+        className="absolute top-3 right-3 inline-flex h-8 w-8 items-center justify-center rounded-md text-muted-foreground transition-colors hover:bg-card hover:text-foreground"
         aria-label="Copy code"
       >
         {copied ? (
@@ -33,8 +33,8 @@ export const CopyableCode = ({ code }: CopyableCodeProps) => {
           <CopyIcon className="h-4 w-4" />
         )}
       </button>
-      <code className="block text-xs text-neutral-700 md:text-sm dark:text-neutral-300">
-        <span className="text-neutral-400 dark:text-neutral-600">$</span> {code}
+      <code className="block text-xs text-foreground md:text-sm">
+        <span className="text-muted-foreground">$</span> {code}
       </code>
     </div>
   );

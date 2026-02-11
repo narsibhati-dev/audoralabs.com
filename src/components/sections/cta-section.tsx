@@ -16,7 +16,7 @@ const staggerTransition = {
 
 export function CTASection() {
   return (
-    <section className="relative overflow-hidden py-20 sm:py-28 bg-neutral-950">
+    <section className="relative overflow-hidden py-20 sm:py-28 bg-[#0a0a0a]">
       {/* Dot pattern background */}
       <div
         className="pointer-events-none absolute inset-0 bg-[radial-gradient(rgba(255,255,255,0.06)_1px,transparent_1px)] bg-size-[24px_24px]"
@@ -35,7 +35,7 @@ export function CTASection() {
           </h2>
         </motion.div>
         <motion.p
-          className="mx-auto mt-6 max-w-2xl text-lg text-neutral-400"
+          className="mx-auto mt-6 max-w-2xl text-lg text-muted-foreground"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.3 }}

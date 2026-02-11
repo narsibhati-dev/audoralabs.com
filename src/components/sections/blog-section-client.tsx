@@ -32,9 +32,9 @@ export function BlogSectionClient({ posts }: BlogSectionClientProps) {
       id="blogs"
       className="relative py-20 sm:py-28 dark bg-[#0a0a0a] text-foreground"
     >
-      {/* Dot pattern overlay with radial fade */}
+      {/* Dot pattern background */}
       <div
-        className="pointer-events-none absolute inset-0 bg-[radial-gradient(#262626_1px,transparent_1px)] [background-size:16px_16px] [mask-image:radial-gradient(ellipse_at_center,black_60%,transparent_100%)]"
+        className="pointer-events-none absolute inset-0 bg-[radial-gradient(rgba(255,255,255,0.06)_1px,transparent_1px)] bg-size-[24px_24px]"
         aria-hidden
       />
 
@@ -57,7 +57,7 @@ export function BlogSectionClient({ posts }: BlogSectionClientProps) {
           {featured && (
             <AnimateOnScroll className="lg:col-span-2">
               <motion.div
-                className="group flex flex-col overflow-hidden rounded-xl border border-border bg-gradient-to-b from-neutral-50 to-neutral-100 dark:from-neutral-900 dark:to-neutral-950"
+                className="group flex flex-col overflow-hidden rounded-xl border border-border bg-gradient-to-b from-card-gradient-from to-card-gradient-to"
                 initial={false}
                 whileHover={{
                   scale: 1.01,
@@ -106,7 +106,7 @@ export function BlogSectionClient({ posts }: BlogSectionClientProps) {
             <StaggerContainer className="flex flex-col gap-4">
               {recent.map((post) => (
                 <StaggerItem key={post.slug}>
-                  <div className="group flex flex-col rounded-xl border border-border bg-gradient-to-b from-neutral-50 to-neutral-100 p-4 transition-colors hover:border-neutral-400 dark:from-neutral-900 dark:to-neutral-950 dark:hover:border-neutral-600 hover:shadow-md">
+                  <div className="group flex flex-col rounded-xl border border-border bg-gradient-to-b from-card-gradient-from to-card-gradient-to p-4 transition-colors hover:border-subtle-border hover:shadow-md">
                     <Link href={`/blogs/${post.slug}`} className="flex-1">
                       <h4 className="mb-2 font-semibold text-foreground transition-colors group-hover:text-muted-foreground">
                         <span className="relative inline-block after:absolute after:left-0 after:bottom-0 after:h-px after:w-0 after:bg-muted-foreground after:transition-all after:duration-200 group-hover:after:w-full">
@@ -134,7 +134,7 @@ export function BlogSectionClient({ posts }: BlogSectionClientProps) {
         {/* View All Link */}
         <AnimateOnScroll delay={400}>
           <div className="mt-12 text-center">
-            <CTAButton href="/blogs" variant="onDark">
+            <CTAButton href="/blogs" variant="onDark" external={true}>
               View All Articles
             </CTAButton>
           </div>

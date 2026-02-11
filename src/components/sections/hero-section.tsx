@@ -70,7 +70,7 @@ export function HeroSection() {
   const codeParallaxY = useTransform(scrollYProgress, [0, 0.25], [0, 60]);
 
   return (
-    <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden bg-neutral-950 -mt-14 md:-mt-16 pt-14 md:pt-16">
+    <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden bg-section-dark -mt-14 md:-mt-16 pt-14 md:pt-16">
       <ParticleCanvasDynamic />
       {/* Bottom fade so particles blend into expertise section */}
       <div
@@ -101,11 +101,11 @@ export function HeroSection() {
             className="rounded-lg border border-white/10 bg-black/60 backdrop-blur-sm p-4 shadow-lg"
           >
             <div className="flex items-center gap-1.5 mb-3">
-              <div className="h-2.5 w-2.5 rounded-full bg-neutral-500" />
-              <div className="h-2.5 w-2.5 rounded-full bg-neutral-500" />
-              <div className="h-2.5 w-2.5 rounded-full bg-neutral-500" />
+              <div className="h-2.5 w-2.5 rounded-full bg-muted-foreground" />
+              <div className="h-2.5 w-2.5 rounded-full bg-muted-foreground" />
+              <div className="h-2.5 w-2.5 rounded-full bg-muted-foreground" />
             </div>
-            <pre className="font-mono text-xs text-neutral-300 whitespace-pre">
+            <pre className="font-mono text-xs text-neutral-400 whitespace-pre">
               {snippet.code}
             </pre>
           </motion.div>
@@ -155,7 +155,7 @@ export function HeroSection() {
           >
             <Badge
               variant="outline"
-              className="mb-6 ring-0 border-white/20 text-neutral-200 bg-black/40 backdrop-blur-sm"
+              className="mb-6 ring-0 border-white/20 text-foreground/80 bg-black/40 backdrop-blur-sm"
             >
               Product Studio
             </Badge>
@@ -175,7 +175,7 @@ export function HeroSection() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="mx-auto mb-10 max-w-2xl text-lg text-neutral-300 [text-shadow:0_0_12px_rgba(0,0,0,0.8)] sm:text-xl"
+          className="mx-auto mb-10 max-w-2xl text-lg text-neutral-400 [text-shadow:0_0_12px_rgba(0,0,0,0.8)] sm:text-xl"
         >
           {SITE_CONFIG.shortDescription}
         </motion.p>
@@ -216,7 +216,7 @@ export function HeroSection() {
             href={SITE_CONFIG.links.github}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 text-sm text-neutral-400 [text-shadow:0_0_8px_rgba(0,0,0,0.6)] transition-colors hover:text-white"
+            className="inline-flex items-center gap-2 text-sm text-muted-foreground [text-shadow:0_0_8px_rgba(0,0,0,0.6)] transition-colors hover:text-white"
           >
             <GithubIcon className="h-4 w-4" />
             Check out our open source work

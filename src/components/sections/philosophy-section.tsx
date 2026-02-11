@@ -45,7 +45,7 @@ export function PhilosophySection() {
                 }}
               >
                 <motion.div
-                  className="mx-auto mb-4 inline-flex rounded-lg bg-neutral-100 p-4 dark:bg-neutral-800"
+                  className="mx-auto mb-4 inline-flex rounded-lg bg-muted p-4"
                   initial={false}
                   whileInView={{
                     scale: [1, 1.08, 1],
@@ -56,7 +56,7 @@ export function PhilosophySection() {
                   }}
                   viewport={{ once: true, amount: 0.5 }}
                 >
-                  <div className="text-neutral-700 dark:text-neutral-300">
+                  <div className="text-foreground">
                     {iconMap[principle.iconName]}
                   </div>
                 </motion.div>

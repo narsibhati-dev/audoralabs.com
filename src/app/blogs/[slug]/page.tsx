@@ -116,14 +116,14 @@ export default async function Blog({
             {post.metadata.title}
           </h1>
           <div className="mt-2 flex max-w-[650px] items-center justify-between text-sm">
-            <p className="flex items-center gap-1.5 text-sm text-neutral-600 dark:text-neutral-400">
+            <p className="flex items-center gap-1.5 text-sm text-muted-foreground">
               <Calendar className="h-4 w-4 shrink-0" />
               {formatDateDisplay(post.metadata.publishedAt)}
             </p>
           </div>
           {post.metadata.summary && (
             <div className="mt-4 mb-8 max-w-[650px]">
-              <p className="border-l-2 border-neutral-300 pl-4 text-base leading-relaxed text-neutral-500 italic dark:border-neutral-600 dark:text-neutral-400">
+              <p className="border-l-2 border-border pl-4 text-base leading-relaxed text-muted-foreground italic">
                 {post.metadata.summary}
               </p>
             </div>
@@ -134,7 +134,7 @@ export default async function Blog({
           <div className="mt-8 flex flex-wrap items-center justify-between gap-4">
             <Link
               href="/blogs"
-              className="inline-flex items-center gap-1.5 text-sm text-neutral-500 transition-colors hover:text-neutral-900 dark:hover:text-neutral-100"
+              className="inline-flex items-center gap-1.5 text-sm text-muted-foreground transition-colors hover:text-foreground"
             >
               <ArrowLeft className="h-4 w-4" />
               Back to blogs
@@ -144,7 +144,7 @@ export default async function Blog({
                 href={post.metadata.repoUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-1.5 text-sm text-neutral-500 transition-colors hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-neutral-100"
+                className="inline-flex items-center gap-1.5 text-sm text-muted-foreground transition-colors hover:text-foreground"
               >
                 <Github className="h-4 w-4" />
                 View on GitHub

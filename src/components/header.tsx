@@ -38,7 +38,7 @@ export function Header({ blogs = [] }: HeaderProps) {
         mounted ? "translate-y-0 opacity-100" : "-translate-y-4 opacity-0"
       }`}
     >
-      <div className="flex items-center justify-between border-b border-neutral-200 bg-background px-4 py-2.5 md:overflow-hidden md:rounded-2xl md:border md:border-border md:shadow-lg md:shadow-black/5 dark:border-neutral-700 dark:md:shadow-black/20">
+      <div className="flex items-center justify-between border-b border-border bg-background px-4 py-2.5 md:overflow-hidden md:rounded-2xl md:border md:border-border md:shadow-lg md:shadow-black/5 dark:md:shadow-black/20">
         <Link
           href="/"
           className="group border-0 outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:outline"

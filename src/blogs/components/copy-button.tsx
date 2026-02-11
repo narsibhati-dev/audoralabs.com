@@ -31,7 +31,7 @@ export function CopyButton({
     <button
       onClick={copy}
       className={cn(
-        "inline-flex size-7 items-center justify-center rounded-md border border-neutral-700 bg-neutral-800 text-neutral-400 opacity-0 transition-all group-hover:opacity-100 hover:bg-neutral-700 hover:text-neutral-200 focus-visible:opacity-100",
+        "inline-flex size-7 items-center justify-center rounded-md border border-subtle-border bg-muted text-muted-foreground opacity-0 transition-all group-hover:opacity-100 hover:bg-card hover:text-foreground focus-visible:opacity-100",
         className,
       )}
       aria-label="Copy code"

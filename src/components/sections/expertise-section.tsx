@@ -19,22 +19,23 @@ export function ExpertiseSection() {
   return (
     <section
       id="expertise"
-      className="relative pt-12 sm:pt-16 pb-20 sm:pb-28 dark bg-[#0a0a0a] text-foreground"
+      className="relative pt-12 sm:pt-16 pb-20 sm:pb-28 dark bg-[#0a0a0a]"
     >
       {/* Subtle grid pattern overlay */}
-      {/* Dot pattern overlay with radial fade */}
+      {/* Dot pattern background */}
       <div
-        className="pointer-events-none absolute inset-0 bg-[radial-gradient(#262626_1px,transparent_1px)] [background-size:16px_16px] [mask-image:radial-gradient(ellipse_at_center,black_60%,transparent_100%)]"
+        className="pointer-events-none absolute inset-0 bg-[radial-gradient(rgba(255,255,255,0.06)_1px,transparent_1px)] bg-size-[24px_24px]"
         aria-hidden
       />
+
       <div className="relative mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         <AnimateOnScroll>
           <div className="text-center">
             <Badge className="mb-4">Our Expertise</Badge>
-            <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
+            <h2 className="text-3xl font-bold tracking-tight text-white sm:text-4xl">
               Production-grade systems that scale
             </h2>
-            <p className="mx-auto mt-4 max-w-2xl text-lg text-muted-foreground">
+            <p className="mx-auto mt-4 max-w-2xl text-lg text-neutral-400">
               From real-time collaboration to high-throughput APIs, we build
               software that performs under pressure.
             </p>

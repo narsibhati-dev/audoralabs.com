@@ -30,7 +30,7 @@ export function CardViewLink({
         variant === "light" &&
           "text-muted-foreground hover:text-foreground group-hover:text-foreground",
         variant === "dark" &&
-          "text-neutral-400 hover:text-white group-hover:text-white dark:text-neutral-500 dark:hover:text-neutral-100 dark:group-hover:text-neutral-100",
+          "text-muted-foreground hover:text-white group-hover:text-white",
       )}
       aria-label={ariaLabel}
     >

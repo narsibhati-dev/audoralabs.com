@@ -82,7 +82,7 @@ export default async function ProductsDetailPage({
       {/* Hero / Icon area */}
       <div className="mb-8 overflow-hidden rounded-xl border border-border bg-muted/30">
         <div className="flex aspect-video w-full items-center justify-center bg-muted/50">
-          <div className="rounded-2xl bg-neutral-100 p-8 text-neutral-700 dark:bg-neutral-800 dark:text-neutral-300">
+          <div className="rounded-2xl bg-muted p-8 text-foreground">
             {iconMap[product.icon] || <Activity className="h-12 w-12" />}
           </div>
         </div>
@@ -164,7 +164,7 @@ export default async function ProductsDetailPage({
             {product.techStack.map((tech) => (
               <span
                 key={tech}
-                className="rounded-md bg-neutral-800 px-3 py-1.5 text-sm font-medium text-neutral-100 dark:bg-neutral-700"
+                className="rounded-md bg-muted px-3 py-1.5 text-sm font-medium text-foreground"
               >
                 {tech}
               </span>
