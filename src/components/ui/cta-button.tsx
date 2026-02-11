@@ -14,6 +14,7 @@ export interface CTAButtonProps {
   variant?: "primary" | "onDark" | "onLight";
   /** If true, adds target="_blank" rel="noopener noreferrer". */
   external?: boolean;
+  className?: string;
 }
 
 const arrowVariants = {
@@ -26,6 +27,7 @@ export function CTAButton({
   children,
   variant = "primary",
   external = false,
+  className,
 }: CTAButtonProps) {
   const variantClasses = {
     primary:
@@ -37,11 +39,11 @@ export function CTAButton({
   };
 
   return (
-    <motion.div whileHover="hover">
+    <motion.div className={className} whileHover="hover">
       <MotionLink
         href={href}
         className={clsx(
-          "group inline-flex items-center gap-2",
+          "group inline-flex w-full items-center justify-center gap-2",
           variantClasses[variant],
         )}
         whileHover="hover"

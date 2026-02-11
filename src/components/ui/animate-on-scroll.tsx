@@ -18,13 +18,12 @@ export function AnimateOnScroll({
 }: AnimateOnScrollProps) {
   return (
     <motion.div
-      initial={{ opacity: 0, y: 30, filter: "blur(4px)" }}
-      whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+      initial={{ opacity: 0, y: 16 }}
+      whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: threshold }}
       transition={{
-        type: "spring",
-        stiffness: 100,
-        damping: 20,
+        duration: 0.4,
+        ease: "easeOut",
         delay: delay / 1000,
       }}
       className={clsx(className)}

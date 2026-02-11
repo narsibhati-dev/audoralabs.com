@@ -5,9 +5,7 @@ import { SITE_CONFIG } from "@/config/site";
 import { Badge } from "@/components/ui/badge";
 import { GithubIcon } from "lucide-react";
 import { CTAButton } from "@/components/ui/cta-button";
-import { motion, useScroll, useTransform } from "motion/react";
 import { ParticleCanvasDynamic } from "@/components/gl/particle-canvas-dynamic";
-const MotionLink = motion.create(Link);
 
 // Code snippets that "leak" across the hero
 const codeSnippets = [
@@ -66,9 +64,6 @@ const terminalSnippets = [
 ];
 
 export function HeroSection() {
-  const { scrollYProgress } = useScroll();
-  const codeParallaxY = useTransform(scrollYProgress, [0, 0.25], [0, 60]);
-
   return (
     <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden bg-section-dark -mt-14 md:-mt-16 pt-14 md:pt-16">
       <ParticleCanvasDynamic />
@@ -77,29 +72,13 @@ export function HeroSection() {
         className="pointer-events-none absolute inset-0 z-1 bg-[linear-gradient(to_bottom,transparent_0,transparent_95%,#0a0a0a_100%)]"
         aria-hidden
       />
-      {/* Floating terminal snippets */}
+      {/* Floating terminal snippets (static, no animation) */}
       {terminalSnippets.map((snippet, i) => (
         <div
           key={`terminal-${i}`}
           className={`absolute ${snippet.position} hidden lg:block`}
         >
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{
-              opacity: 1,
-              y: [0, -6, 0],
-            }}
-            transition={{
-              opacity: { duration: 0.6, delay: 0.5 + i * 0.3 },
-              y: {
-                duration: 3.5 + i * 0.5,
-                repeat: Infinity,
-                ease: "easeInOut",
-                delay: 1.2 + i * 0.2,
-              },
-            }}
-            className="rounded-lg border border-white/10 bg-black/60 backdrop-blur-sm p-4 shadow-lg"
-          >
+          <div className="rounded-lg border border-white/10 bg-black/60 backdrop-blur-sm p-4 shadow-lg">
             <div className="flex items-center gap-1.5 mb-3">
               <div className="h-2.5 w-2.5 rounded-full bg-muted-foreground" />
               <div className="h-2.5 w-2.5 rounded-full bg-muted-foreground" />
@@ -108,110 +87,67 @@ export function HeroSection() {
             <pre className="font-mono text-xs text-neutral-400 whitespace-pre">
               {snippet.code}
             </pre>
-          </motion.div>
+          </div>
         </div>
       ))}
 
-      {/* Leaky code background snippets with parallax */}
+      {/* Leaky code background snippets (static, no parallax) */}
       {codeSnippets.map((snippet, i) => (
-        <motion.div
+        <div
           key={i}
           className={`absolute ${snippet.position} hidden lg:block pointer-events-none select-none max-w-md`}
-          style={{
-            rotate: snippet.rotation,
-            y: codeParallaxY,
-          }}
+          style={{ rotate: snippet.rotation }}
         >
           <pre className="font-mono text-xs leading-relaxed text-white/20 whitespace-pre">
             {snippet.code}
           </pre>
-        </motion.div>
+        </div>
       ))}
 
       {/* Content */}
       <div className="relative z-10 mx-auto max-w-6xl px-4 text-center">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="inline-block"
-        >
-          <motion.span
-            initial={{ opacity: 0, boxShadow: "0 0 0 0 rgba(0,0,0,0)" }}
-            animate={{
-              opacity: 1,
-              boxShadow: [
-                "0 0 0 0 rgba(163,163,163,0)",
-                "0 0 20px 2px rgba(163,163,163,0.15)",
-                "0 0 0 0 rgba(163,163,163,0)",
-              ],
-            }}
-            transition={{
-              duration: 1.8,
-              delay: 0.4,
-              boxShadow: { times: [0, 0.5, 1], duration: 1.8 },
-            }}
-            className="inline-block rounded-full"
-          >
+        <div className="inline-block">
+          <span className="inline-block rounded-full">
             <Badge
               variant="outline"
               className="mb-6 ring-0 border-white/20 text-foreground/80 bg-black/40 backdrop-blur-sm"
             >
               Product Studio
             </Badge>
-          </motion.span>
-        </motion.div>
+          </span>
+        </div>
 
-        <motion.h1
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.1 }}
-          className="mb-6 text-4xl font-bold tracking-tight font-sentient text-white [text-shadow:0_0_20px_rgba(0,0,0,0.8),0_0_40px_rgba(0,0,0,0.5)] sm:text-5xl md:text-6xl lg:text-7xl"
-        >
+        <h1 className="mb-6 text-4xl font-bold tracking-tight font-sentient text-white [text-shadow:0_0_20px_rgba(0,0,0,0.8),0_0_40px_rgba(0,0,0,0.5)] sm:text-5xl md:text-6xl lg:text-7xl">
           {SITE_CONFIG.tagline}
-        </motion.h1>
+        </h1>
 
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-          className="mx-auto mb-10 max-w-2xl text-lg text-neutral-400 [text-shadow:0_0_12px_rgba(0,0,0,0.8)] sm:text-xl"
-        >
+        <p className="mx-auto mb-10 max-w-2xl text-lg text-neutral-400 [text-shadow:0_0_12px_rgba(0,0,0,0.8)] sm:text-xl">
           {SITE_CONFIG.shortDescription}
-        </motion.p>
+        </p>
 
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.3 }}
-          className="flex flex-col items-center justify-center gap-4 sm:flex-row"
-        >
+        <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
           {/* Primary CTA */}
-          <CTAButton href="#products" variant="onDark">
+          <CTAButton
+            href="#products"
+            variant="onDark"
+            className="w-full max-w-sm sm:w-auto sm:max-w-none"
+          >
             View Products
           </CTAButton>
 
           {/* Secondary CTA */}
-          <motion.div whileHover="hover">
-            <MotionLink
-              href={SITE_CONFIG.links.twitter}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group inline-flex items-center gap-2 rounded-lg border border-white/20 bg-black/40 backdrop-blur-sm px-6 py-3 text-sm font-medium text-white transition-all hover:bg-black/60 active:scale-95"
-              whileHover="hover"
-            >
-              Follow the Build
-            </MotionLink>
-          </motion.div>
-        </motion.div>
+          <Link
+            href={SITE_CONFIG.links.twitter}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group inline-flex w-full max-w-sm items-center justify-center gap-2 rounded-lg border border-white/20 bg-black/40 backdrop-blur-sm px-6 py-3 text-sm font-medium text-white transition-all hover:bg-black/60 active:scale-95 sm:w-auto sm:max-w-none"
+          >
+            Follow the Build
+          </Link>
+        </div>
 
         {/* GitHub CTA */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.6, delay: 0.5 }}
-          className="mt-8"
-        >
+        <div className="mt-8">
           <Link
             href={SITE_CONFIG.links.github}
             target="_blank"
@@ -221,7 +157,7 @@ export function HeroSection() {
             <GithubIcon className="h-4 w-4" />
             Check out our open source work
           </Link>
-        </motion.div>
+        </div>
       </div>
     </section>
   );
