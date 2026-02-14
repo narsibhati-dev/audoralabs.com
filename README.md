@@ -44,7 +44,8 @@ Open [http://localhost:3000](http://localhost:3000) to see the app.
 
 ### SEO
 
-- **Open Graph & Twitter Cards** – Via `getMetadata()` / `getPageMetadata()` in `src/lib/seo.ts`
+- **Open Graph & Twitter Cards** – Via `getMetadata()` / `getPageMetadata()` in `src/lib/seo.ts`. Default OG image: `public/images/og-image.webp` (or set `NEXT_PUBLIC_OG_IMAGE` to a full URL).
+- **Verifying OG image** – After deploy, confirm link previews with [Facebook Sharing Debugger](https://developers.facebook.com/tools/debug/) or [Twitter Card Validator](https://cards-dev.twitter.com/validator). Use your live site URL; crawlers need the image to be publicly reachable (no 404).
 - **Structured Data (JSON-LD)** – WebSite, Organization, Breadcrumb (in layout and blog post pages)
 - **robots.txt** – `src/app/robots.ts` (allow `/`, disallow `/api/`, `/_next/`, `/private/`, sitemap reference)
 - **sitemap.xml** – `src/app/sitemap.ts` (home, products, blog posts with priorities)

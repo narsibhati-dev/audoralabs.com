@@ -33,25 +33,13 @@ export default function manifest(): MetadataRoute.Manifest {
     scope: "/",
     screenshots: [
       {
-        src: "/images/screenshot-mobile-dark.webp",
+        src: "/images/screenshot-mobile.webp",
         type: "image/webp",
         sizes: "440x956",
         form_factor: "narrow",
       },
       {
-        src: "/images/screenshot-mobile-light.webp",
-        type: "image/webp",
-        sizes: "440x956",
-        form_factor: "narrow",
-      },
-      {
-        src: "/images/screenshot-desktop-dark.webp",
-        type: "image/webp",
-        sizes: "1920x1080",
-        form_factor: "wide",
-      },
-      {
-        src: "/images/screenshot-desktop-light.webp",
+        src: "/images/screenshot-desktop.webp",
         type: "image/webp",
         sizes: "1920x1080",
         form_factor: "wide",
